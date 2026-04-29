@@ -37,6 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `tasks/lessons.md` capturing Foundry env state pitfall, solc/pragma pinning, CI guard pattern, OZ-first audit-grade principle
 - **Genesis 1D**: `genesis/erc20-gas-token.json` — Avalanche9000 Subnet-EVM genesis with custom native gas token, ICM (Warp) enabled, `contractNativeMinter` and `contractDeployerAllowList` precompile placeholders
 - **Genesis 1D docs**: `genesis/README.md` — chainID guidance, allocation hex helpers, multisig admin requirements, mainnet checklist, Avalanche CLI deployment commands
+- **Türkçe rehber 1E**: `docs/tr/03-templateler/erc20-gas.md` (295 lines) — kapsamlı deployment guide: ne işe yarar (Senario A/B), Avalanche/Solidity özellikleri, güvenlik uyarıları (multisig owner, immutable cap, permit replay), adım-adım Fuji deploy, ortak hatalar + çözümleri, Foundry test komutları, ICTT bridge'e geçiş öngörüsü
 
 ### Coming Soon (Phase 1 Sprints)
 - v0.1.0 — ERC-20 + Custom Gas Token template
