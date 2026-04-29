@@ -12,6 +12,7 @@ _Audit-grade Solidity şablonları · Subnet-EVM · ICTT cross-L1 köprü · Tü
 [![Foundry](https://img.shields.io/badge/Foundry-1.5%2B-orange.svg)](https://book.getfoundry.sh)
 [![Built on Avalanche](https://img.shields.io/badge/Built%20on-Avalanche-E84142.svg)](https://www.avax.network)
 [![OpenZeppelin](https://img.shields.io/badge/OpenZeppelin-v5.3+-4E5EE4.svg)](https://www.openzeppelin.com)
+[![Fuji Live](https://img.shields.io/badge/Fuji-0x06451DD4...2eB0-success?logo=avalanche)](https://testnet.snowtrace.io/address/0x06451DD4Fb8ebFC19870DacC9568f4364D2A2eB0)
 
 [Ne Bu](#-ne-bu) · [Mimari](#%EF%B8%8F-mimari) · [Şablonlar](#-şablonlar) · [Hızlı Başlangıç](#-hızlı-başlangıç) · [Niye Avalanche](#-niye-avalanche) · [Yol Haritası](#%EF%B8%8F-yol-haritası) · [Güvenlik](#%EF%B8%8F-güvenlik) · [Katkı](#-katkı)
 
@@ -92,7 +93,7 @@ Türk Solidity geliştiricilerinin Avalanche'da kendi blockchain'ini (Sovereign 
 
 | # | Şablon | Durum | Açıklama |
 |---|---|---|---|
-| 1 | **ERC-20 + Custom Gas Token** | 🚧 Geliştiriliyor | Subnet-EVM için native gas token — `Ownable2Step`, `Capped`, `Permit` (EIP-2612) |
+| 1 | **ERC-20 + Custom Gas Token** | ✅ v0.1.0 | Subnet-EVM için native gas token — `Ownable2Step`, `Capped`, `Permit` (EIP-2612). [Live on Fuji](https://testnet.snowtrace.io/address/0x06451DD4Fb8ebFC19870DacC9568f4364D2A2eB0) |
 | 2 | **ERC-721 NFT Collection** | ⏳ Planlanıyor | Allowlist (Merkle), royalty (ERC-2981), IPFS metadata, pause |
 | 3 | **ICTT Cross-L1 Köprü** | ⏳ Planlanıyor | `ava-labs/icm-contracts` audited inherit — Token Home + Token Remote |
 | 4 | **Soulbound Credential** | ⏳ Planlanıyor | ERC-5114, eğitim sertifikası, ARIA Hub-uyumlu |

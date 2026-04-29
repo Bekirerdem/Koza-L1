@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.0] — 2026-04-29
+
+First public release: Template 1 (ERC-20 + Custom Gas Token) is feature-complete,
+fully tested, documented in Türkçe, and **live on Fuji testnet**.
+
+### Live Deployment
+
+- **Network:** Avalanche Fuji Testnet (chain ID 43113)
+- **Contract:** `KozaGasToken` at [`0x06451DD4Fb8ebFC19870DacC9568f4364D2A2eB0`](https://testnet.snowtrace.io/address/0x06451DD4Fb8ebFC19870DacC9568f4364D2A2eB0)
+- **Owner:** `0x39AEfbC8388da12907A21d9De888B288a9fa5794` (Bekir Erdem deployer EOA, will be migrated to multisig before mainnet)
+- **Initial mint:** 100,000 KGAS to owner
+- **Cap:** 1,000,000 KGAS
+
+### Verification Status
+
+Snowtrace source verification pending — Routescan free-tier API key blocked by rate-limit / policy. Contract bytecode is live and all read functions confirmed via `cast call` (name, symbol, cap, totalSupply, owner all match expected). To be retried with a personal Snowtrace API key in v0.1.1.
+
 ## [Unreleased]
 
 ### Added
@@ -51,4 +68,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-[Unreleased]: https://github.com/Bekirerdem/koza-l1/compare/HEAD
+[Unreleased]: https://github.com/Bekirerdem/koza-l1/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/Bekirerdem/koza-l1/releases/tag/v0.1.0
