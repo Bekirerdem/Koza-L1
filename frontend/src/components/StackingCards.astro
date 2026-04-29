@@ -1,0 +1,137 @@
+---
+// Avax-style sticky stacking cards
+// Each card snaps/sticks to viewport with notched top-right corners + big right-side icon.
+
+interface Card {
+    number: string;
+    title: string;
+    body: string;
+    bgClass: string;
+    textClass: string;
+    iconClass: string;
+    icon: string;
+}
+
+const cards: Card[] = [
+    {
+        number: "01",
+        title: "Audit-grade. Test edilmiş.",
+        body: "OpenZeppelin v5.3+ pattern'leri, Foundry fuzz/invariant testler %100 coverage ile, Slither + Aderyn statik analiz CI'da.",
+        bgClass: "bg-koza-red-deep",
+        textClass: "text-true-white",
+        iconClass: "text-black/85",
+        icon: "arrows",
+    },
+    {
+        number: "02",
+        title: "Türkçe. Anadilde.",
+        body: "1040 satır Türkçe doküman: Avalanche 101, ICM/ICTT/Subnet-EVM ve audit-grade güvenlik checklist (22 madde).",
+        bgClass: "bg-koza-blue-deep",
+        textClass: "text-true-white",
+        iconClass: "text-black/85",
+        icon: "stack",
+    },
+    {
+        number: "03",
+        title: "ICTT native. Cross-L1 köprü.",
+        body: "ava-labs/icm-contracts audited Token Home + Token Remote pattern'i hazır. Bridge yazma riski yok.",
+        bgClass: "bg-koza-red-hot",
+        textClass: "text-true-white",
+        iconClass: "text-black/85",
+        icon: "triangle",
+    },
+    {
+        number: "04",
+        title: "Avalanche9000 ready.",
+        body: "Etna upgrade sonrası Sovereign L1, custom gas token, dynamic fee. %99 maliyet düşüşü, genesis JSON dahil.",
+        bgClass: "bg-koza-orange",
+        textClass: "text-true-white",
+        iconClass: "text-black/85",
+        icon: "diamond",
+    },
+    {
+        number: "05",
+        title: "Team1 TR ailesi için.",
+        body: "ARIA Hub mezunları, Patika.dev geliştiricileri, Bursa Koza DAO ve üniversite kulüpleri için ortak başlangıç altyapısı.",
+        bgClass: "bg-bg-card-dark",
+        textClass: "text-white",
+        iconClass: "text-white/15",
+        icon: "globe",
+    },
+];
+---
+
+<section class="relative w-full px-4 lg:px-8 pb-32">
+    <div class="max-w-[1400px] mx-auto flex flex-col">
+        {
+            cards.map((card, index) => (
+                <article
+                    class={`sticky w-full overflow-hidden shadow-[0_-15px_40px_rgba(0,0,0,0.2)] avax-chamfer-tr border-t border-white/20 ${card.bgClass} ${card.textClass}`}
+                    style={`top: calc(10vh + ${index * 6.5}rem); z-index: ${index + 1}; min-height: 65vh; margin-bottom: 60vh;`}
+                >
+                    <div class="flex flex-col lg:flex-row h-full min-h-[65vh]">
+                        {/* Left Column: Header (Number + Title) and Body (Description) */}
+                        <div class="w-full lg:w-[65%] flex flex-col px-6 lg:px-12 py-6 lg:py-8">
+                            {/* Header row: This is the 'tab' part that stays visible when cards stack */}
+                            <div class="flex flex-row items-center gap-6 lg:gap-8 h-16 lg:h-18 mb-4 lg:mb-8">
+                                <span class="font-sans text-xl lg:text-2xl font-semibold tracking-widest opacity-80 w-8 lg:w-12 shrink-0">
+                                    {card.number}
+                                </span>
+                                <h3 class="font-sans font-bold uppercase leading-none text-2xl lg:text-[2.5rem] tracking-tight m-0">
+                                    {card.title}
+                                </h3>
+                            </div>
+                            
+                            {/* Description text */}
+                            <div class="pl-14 lg:pl-[5rem]">
+                                <p class="text-xl lg:text-[1.35rem] font-medium opacity-90 leading-relaxed max-w-2xl">
+                                    {card.body}
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Right Column: Decorative icon area with vertical divider */}
+                        <div class="w-full lg:w-[35%] lg:border-l lg:border-white/20 p-8 lg:p-12 flex items-center justify-center relative overflow-hidden bg-black/5 lg:bg-transparent">
+                            <svg
+                                viewBox="0 0 200 200"
+                                class={`w-40 h-40 lg:w-64 lg:h-64 ${card.iconClass}`}
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                {card.icon === "arrows" && (
+                                    <path d="M20 100L90 30L90 70L165 70L165 130L90 130L90 170L20 100Z" fill="currentColor" />
+                                )}
+                                {card.icon === "stack" && (
+                                    <g fill="currentColor">
+                                        <rect x="30" y="70" width="90" height="90" />
+                                        <rect x="70" y="40" width="90" height="90" opacity="0.6" />
+                                        <rect x="110" y="10" width="90" height="90" opacity="0.3" />
+                                    </g>
+                                )}
+                                {card.icon === "triangle" && (
+                                    <polygon points="100,15 180,170 20,170" fill="currentColor" />
+                                )}
+                                {card.icon === "diamond" && (
+                                    <g fill="currentColor">
+                                        <polygon points="100,10 190,100 100,190 10,100" />
+                                    </g>
+                                )}
+                                {card.icon === "globe" && (
+                                    <g stroke="currentColor" stroke-width="8" fill="none">
+                                        <circle cx="100" cy="100" r="80" />
+                                        <ellipse cx="100" cy="100" rx="40" ry="80" />
+                                        <line x1="20" y1="100" x2="180" y2="100" stroke-width="8" />
+                                    </g>
+                                )}
+                            </svg>
+                        </div>
+                    </div>
+                </article>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    /* No additional styles needed, using avax-chamfer-tr from global.css */
+</style>
