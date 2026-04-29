@@ -1,0 +1,232 @@
+@import "tailwindcss";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+
+/* Cabinet Grotesk loaded via <link> in Layout.astro for CDN reliability */
+
+@theme {
+    /* === BACKGROUNDS === */
+    --color-bg-primary: #0a0a0a;
+    --color-bg-pure: #000000;
+    --color-bg-card-dark: #111111;
+    --color-bg-card-light: #f8f8f6;
+
+    /* === BRAND === */
+    --color-koza-red: #e84142;
+    --color-koza-red-hot: #ff394a;
+    --color-koza-red-deep: #b8232c; /* stack card 01 */
+    --color-koza-orange: #ff6b35;
+    --color-koza-blue: #2251db; /* Avalanche blue */
+    --color-koza-blue-deep: #0046c8; /* stack card 02 */
+
+    /* === NEUTRAL === */
+    --color-white: #ffffff;
+    --color-true-white: #ffffff;
+    --color-true-black: #000000;
+    --color-gray-100: #f6f6f6;
+    --color-gray-300: #d1d1d1;
+    --color-gray-500: #6d6d6d;
+    --color-gray-700: #2d2d2d;
+    --color-gray-900: #0a0a0a;
+
+    /* === FONTS === */
+    --font-display: "Cabinet Grotesk", "system-ui", "sans-serif";
+    --font-sans: "Inter", "system-ui", "sans-serif";
+    --font-mono: "ui-monospace", "Menlo", "Consolas", "monospace";
+
+    /* === SPACING (additional to Tailwind defaults) === */
+    --spacing-section: 8rem;
+    --spacing-section-tight: 5rem;
+
+    /* === RADII === */
+    --radius-card: 15px;
+    --radius-button: 0px;     /* avax-style: square buttons */
+    --radius-pill: 9999px;
+}
+
+/* === LIGHT THEME VARIABLES === */
+.light-theme {
+    --color-bg-primary: #f8f8f6;
+    --color-bg-pure: #ffffff;
+    --color-bg-card-dark: #e5e5e5;
+    --color-bg-card-light: #d1d1d1;
+
+    --color-white: #0a0a0a;
+    --color-gray-100: #1a1a1a;
+    --color-gray-300: #2d2d2d;
+    --color-gray-500: #6d6d6d;
+    --color-gray-700: #d1d1d1;
+    --color-gray-900: #ffffff;
+}
+
+/* === GLOBAL RESET / BASE === */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    background-color: var(--color-bg-primary);
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    margin: 0;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    background-color: var(--color-bg-primary);
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+    pointer-events: none;
+}
+
+/* === DISPLAY HEADINGS === */
+.font-display {
+    font-family: var(--font-display);
+    font-weight: 400; /* avax-style: light/regular, NOT bold */
+    letter-spacing: -0.02em;
+}
+
+.text-mega {
+    font-family: var(--font-display);
+    font-weight: 400; /* avax light */
+    font-size: clamp(3rem, 18vw, 20rem);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+}
+
+/* === AVAX-STYLE LINE/WORD REVEAL === */
+.split-line {
+    display: block;
+    overflow: hidden;
+    line-height: 1;
+}
+.split-line > span {
+    display: inline-block;
+    will-change: transform;
+}
+.split-line-inline {
+    display: inline-block;
+    overflow: hidden;
+}
+.split-line-inline > span {
+    display: inline-block;
+    will-change: transform;
+}
+
+.split-mask {
+    overflow: hidden;
+}
+
+/* === NOTCHED CORNERS (avax signature) === */
+.avax-chamfer-right {
+    /* Angled cuts on top-right and bottom-right */
+    --cut: 64px;
+    clip-path: polygon(
+        0 0,
+        calc(100% - var(--cut)) 0,
+        100% var(--cut),
+        100% calc(100% - var(--cut)),
+        calc(100% - var(--cut)) 100%,
+        0 100%
+    );
+}
+
+.avax-chamfer-tr {
+    /* Angled cut on top-right only */
+    --cut: 64px;
+    clip-path: polygon(
+        0 0,
+        calc(100% - var(--cut)) 0,
+        100% var(--cut),
+        100% 100%,
+        0 100%
+    );
+}
+
+.avax-chamfer-br {
+    --cut: 64px;
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% calc(100% - var(--cut)),
+        calc(100% - var(--cut)) 100%,
+        0 100%
+    );
+}
+
+.avax-chamfer-bl {
+    --cut: 64px;
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 100%,
+        var(--cut) 100%,
+        0 calc(100% - var(--cut))
+    );
+}
+
+.avax-chamfer-bl-br {
+    --cut: 64px;
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% calc(100% - var(--cut)),
+        calc(100% - var(--cut)) 100%,
+        var(--cut) 100%,
+        0 calc(100% - var(--cut))
+    );
+}
+
+/* === GPU acceleration === */
+.gpu {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--color-bg-pure);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--color-gray-700);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gray-500);
+}
+
+/* === SELECTION === */
+::selection {
+    background: var(--color-koza-red);
+    color: var(--color-white);
+}
