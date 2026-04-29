@@ -25,6 +25,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CI: Aderyn switched from `cargo install` (upstream svm-rs-builds bug) to pre-built binary installer
 - CI: `actions/checkout` upgraded to v5 (Node 24 compat)
 - README: clarified ecosystem positioning (production-grade Türkçe toolkit pozisyonu, "anadilde rehber yok" abartısı düzeltildi)
+- `chore(fmt)`: `bracket_spacing=false` to match Solidity ecosystem default
+
+### Added (Sprint 1)
+- **Template 1**: `src/templates/erc20-gas/KozaGasToken.sol` — ERC-20 + Capped + Permit + Ownable2Step (audit-grade boilerplate)
+- **Tests 1B**: `test/templates/ERC20Gas.t.sol` — 26 unit + fuzz tests covering constructor, mint, burn, ERC-20 standard, ERC-2612 permit (valid/expired/replay), Ownable2Step (transfer, accept, cancel)
+- **Invariants 1B**: `test/templates/ERC20Gas.invariants.t.sol` — handler-based stateful fuzzing with 3 invariants (totalSupply ≤ cap, sum(balances) == totalSupply, owner immutable)
+- **Coverage**: 100% lines / statements / branches / functions on KozaGasToken.sol
 
 ### Coming Soon (Phase 1 Sprints)
 - v0.1.0 — ERC-20 + Custom Gas Token template

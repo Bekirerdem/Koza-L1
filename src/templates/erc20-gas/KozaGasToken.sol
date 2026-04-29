@@ -18,19 +18,21 @@ import {Ownable, Ownable2Step} from "@openzeppelin/contracts/access/Ownable2Step
  *      - ERC20Capped: total supply hard-cap, sınırsız enflasyon yok
  *      - ERC20Permit (EIP-2612): gasless approve, smart wallet UX
  *      - Custom errors: gas + audit kalitesi (require string yerine)
+ *
+ *      Constructor input validation OpenZeppelin parent kontratlarına bırakıldı:
+ *      - cap_ == 0       → ERC20Capped.ERC20InvalidCap(0)
+ *      - initialOwner_ 0 → Ownable.OwnableInvalidOwner(0)
+ *      Bu sayede çift kontrol (gas waste) ve hata mesajı çakışması olmaz.
  */
 contract KozaGasToken is ERC20Capped, ERC20Permit, Ownable2Step {
     /*//////////////////////////////////////////////////////////////
                                 ERRORS
     //////////////////////////////////////////////////////////////*/
 
-    /// @notice Sıfır adres parametresi geçerli değil
-    error ZeroAddress();
-
-    /// @notice Sıfır miktar parametresi geçerli değil
+    /// @notice Sıfır miktar parametresi geçerli değil (mint, burn için).
     error ZeroAmount();
 
-    /// @notice İlk mint cap'i aşıyor
+    /// @notice Constructor'daki ilk mint cap'i aşıyor.
     /// @param cap Maksimum total supply
     /// @param attempted İstenen ilk mint miktarı
     error InitialMintExceedsCap(uint256 cap, uint256 attempted);
@@ -58,9 +60,9 @@ contract KozaGasToken is ERC20Capped, ERC20Permit, Ownable2Step {
         ERC20Permit(name_)
         Ownable(initialOwner_)
     {
-        if (initialOwner_ == address(0)) revert ZeroAddress();
-        if (cap_ == 0) revert ZeroAmount();
-        if (initialMint_ > cap_) revert InitialMintExceedsCap(cap_, initialMint_);
+        if (initialMint_ > cap_) {
+            revert InitialMintExceedsCap(cap_, initialMint_);
+        }
 
         if (initialMint_ > 0) {
             _mint(initialOwner_, initialMint_);
@@ -74,11 +76,11 @@ contract KozaGasToken is ERC20Capped, ERC20Permit, Ownable2Step {
     /**
      * @notice Yeni token mint et. Sadece owner çağırabilir.
      * @dev Cap kontrolü ERC20Capped tarafından `_update` içinde otomatik yapılır.
+     *      Sıfır adres kontrolü ERC20 `_mint` içinde yapılır (ERC20InvalidReceiver).
      * @param to Mint edilecek adres
      * @param amount Mint miktarı (wei cinsinden)
      */
     function mint(address to, uint256 amount) external onlyOwner {
-        if (to == address(0)) revert ZeroAddress();
         if (amount == 0) revert ZeroAmount();
         _mint(to, amount);
     }
