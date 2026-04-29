@@ -1,0 +1,66 @@
+---
+import "@/styles/global.css";
+
+interface Props {
+    title?: string;
+    description?: string;
+}
+
+const {
+    title = "koza-L1 — Türk geliştiriciler için Avalanche L1 starter kit",
+    description = "Audit-grade Solidity şablonları, Subnet-EVM, ICTT cross-L1 köprü ve Türkçe rehber. Avalanche L1 ekosistemine giriş kapısı.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="tr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={description} />
+        <meta name="generator" content={Astro.generator} />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+        <!-- Cabinet Grotesk from Fontshare (Pangram Pangram) -->
+        <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+        <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&display=swap"
+        />
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={Astro.site} />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+
+        <title>{title}</title>
+    </head>
+    <body>
+        <slot />
+
+        <script>
+            import Lenis from "lenis";
+
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t: number) =>
+                    Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                smoothWheel: true,
+            });
+
+            function raf(time: number) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+
+            requestAnimationFrame(raf);
+        </script>
+    </body>
+</html>
