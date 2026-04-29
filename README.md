@@ -1,75 +1,135 @@
-<h1 align="center">koza-l1</h1>
-<p align="center">
-  <strong>Türk geliştiriciler için Avalanche L1 builder toolkit</strong>
-</p>
-<p align="center">
-  Audit-grade Solidity templates · Subnet-EVM · ICTT cross-L1 bridge · Türkçe dokümantasyon
-</p>
+<div align="center">
 
-<p align="center">
-  <a href="#-ne-bu">Ne Bu</a> ·
-  <a href="#-template-listesi">Template Listesi</a> ·
-  <a href="#-hizli-baslangic">Hızlı Başlangıç</a> ·
-  <a href="#-guvenlik">Güvenlik</a> ·
-  <a href="#-katki">Katkı</a>
-</p>
+# 🏔️ koza-L1
+
+**Türk geliştiriciler için Avalanche L1 starter kit**
+
+_Audit-grade Solidity şablonları · Subnet-EVM · ICTT cross-L1 köprü · Türkçe rehber_
+
+[![CI](https://github.com/Bekirerdem/koza-l1/actions/workflows/ci.yml/badge.svg)](https://github.com/Bekirerdem/koza-l1/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Solidity](https://img.shields.io/badge/Solidity-0.8.34-blue.svg)](https://soliditylang.org)
+[![Foundry](https://img.shields.io/badge/Foundry-1.5%2B-orange.svg)](https://book.getfoundry.sh)
+[![Built on Avalanche](https://img.shields.io/badge/Built%20on-Avalanche-E84142.svg)](https://www.avax.network)
+[![OpenZeppelin](https://img.shields.io/badge/OpenZeppelin-v5.3+-4E5EE4.svg)](https://www.openzeppelin.com)
+
+[Ne Bu](#-ne-bu) · [Mimari](#%EF%B8%8F-mimari) · [Şablonlar](#-şablonlar) · [Hızlı Başlangıç](#-hızlı-başlangıç) · [Niye Avalanche](#-niye-avalanche) · [Yol Haritası](#%EF%B8%8F-yol-haritası) · [Güvenlik](#%EF%B8%8F-güvenlik) · [Katkı](#-katkı)
+
+</div>
 
 ---
 
 ## 🎯 Ne Bu
 
-`koza-l1`, Avalanche9000 (Etna) sonrası **Sovereign L1** mimarisi üstüne kurulmuş, Türk geliştiricilere yönelik **audit-grade Solidity template'leri** ve **Türkçe deployment rehberi** sunan açık kaynak bir toolkit.
+**`koza-L1` = "create-react-app, ama Türk dev için Avalanche Solidity"**
 
-**Niye var?**
-- Avalanche9000 ile L1 kurulumu radikal şekilde ucuzladı (%99 maliyet düşüşü) — ama Türk geliştiriciler için **Türkçe production-grade kaynak yok**
-- ICTT (Inter-Chain Token Transfer), Teleporter, Subnet-EVM gibi yeni primitiveler için anadilde rehber bulunmuyor
-- Hackathon kalitesinden production-grade'e geçiş için "hazır şablon" eksik
+Türk Solidity geliştiricilerinin Avalanche'da kendi blockchain'ini (Sovereign L1) ve smart contract'larını **production-grade şekilde** deploy etmesi için hazırlanmış açık kaynak audit-grade Solidity boilerplate kütüphanesi.
 
-**Kim için?**
-- Solo Türk Solidity geliştiricileri
-- ARIA Hub, Patika, Kodluyoruz mezunları
-- Avalanche'da kendi L1'ini kurmak isteyen küçük ekipler / öğrenci kulüpleri
-- Avalanche Foundation grant başvurusu hazırlayanlar
+### 📖 Senaryo
+
+> **Mersin'de ARIA Hub workshop'unu bitirmiş bir öğrenci.** Avalanche Build Games hackathon'una katılmak istiyor. Solidity'yi temel düzeyde biliyor ama "kendi token'ımı nasıl deploy ederim, ICTT ile L1'ler arası nasıl köprü kurarım, audit-grade contract nasıl yazılır" bilmiyor.
+>
+> **Şu an:** Bir hafta İngilizce docs + 10 farklı tutorial + Stack Overflow arasında kayboluyor.
+>
+> **`koza-L1` ile:** `git clone` → `forge install` → audit-grade şablonu kendi projesine uyarla → Türkçe rehberi takip et → 1 saatte güvenli şekilde Fuji'ye deploy et.
+
+### Niye Var?
+
+| Sorun | Mevcut Durum | `koza-L1` Çözümü |
+|---|---|---|
+| **Avalanche9000 ile L1 kurulumu %99 ucuzladı** | Ama production-grade Türkçe toolkit yok | Türkçe + audit-grade boilerplate |
+| **Hackathon → production geçişi zor** | Audit pattern'leri, ICTT lock/burn, ERC-7201 storage Türkçe yazılı kaynaklar yetersiz | Audited primitive'ler üzerine kurulu, denenmiş şablonlar |
+| **Türk Avalanche topluluğu büyüyor** | Team1 TR + Koza DAO + ARIA Hub aktif, ortak kod altyapısı eksik | Topluluk içi ortak temel + Türkçe dokümantasyon |
+
+### Kim İçin?
+
+- 🎓 ARIA Hub, Patika.dev, Kodluyoruz, BTK Akademi mezunları
+- 🏗️ Hackathon-grade'den production'a geçen Türk Solidity geliştiricileri
+- 🏛️ Avalanche'da kendi L1'ini kurmak isteyen küçük ekipler ve öğrenci kulüpleri
+- 💰 Avalanche Foundation grant başvurusu (Retro9000, Codebase) hazırlayanlar
 
 ---
 
-## 📦 Template Listesi (Phase 1)
+## 🏗️ Mimari
 
-| # | Template | Durum | Açıklama |
+```
+┌──────────────────────────────────────────────────────────────────┐
+│                  koza-L1 — Avalanche Starter Kit                 │
+└──────────────────────────────────┬───────────────────────────────┘
+                                   │
+        ┌──────────────────────────┼──────────────────────────┐
+        │                          │                          │
+┌───────▼──────────┐    ┌──────────▼──────────┐   ┌───────────▼─────────┐
+│  Solidity        │    │  Subnet-EVM         │   │  Türkçe Rehber      │
+│  Şablonları      │    │  Genesis Configs    │   │                     │
+│                  │    │                     │   │  • Adım adım deploy │
+│  • ERC-20 Gas    │    │  • Custom gas token │   │  • Audit checklist  │
+│  • ERC-721 NFT   │    │  • Custom chain ID  │   │  • Avalanche 101    │
+│  • ICTT Bridge   │    │  • Validator set    │   │  • ICTT pattern'leri│
+│  • Soulbound     │    │                     │   │                     │
+│  • Treasury      │    │                     │   │                     │
+└──────────────────┘    └─────────────────────┘   └─────────────────────┘
+                                   │
+                                   │ üzerine inşa
+                                   ▼
+        ┌─────────────────────────────────────────────────────┐
+        │  OpenZeppelin v5.3+ · ava-labs/icm-contracts        │
+        │  (audit edilmiş primitive'ler)                      │
+        └─────────────────────────────────────────────────────┘
+                                   │
+                                   │ deploy hedefi
+                                   ▼
+        ┌─────────────────────────────────────────────────────┐
+        │  Avalanche C-Chain (Fuji 43113 / Mainnet 43114)     │
+        │  ◄────────── ICM/ICTT ──────────►                   │
+        │  Custom Sovereign L1 (kendi chain ID, kendi gas)    │
+        └─────────────────────────────────────────────────────┘
+```
+
+---
+
+## 📦 Şablonlar
+
+| # | Şablon | Durum | Açıklama |
 |---|---|---|---|
-| 1 | **ERC-20 + Custom Gas Token** | 🚧 Geliştiriliyor | Subnet-EVM'in native gas token'i için ERC-20 |
-| 2 | **ERC-721 NFT Collection** | ⏳ Planlanıyor | Allowlist (Merkle), royalty (ERC-2981), IPFS |
-| 3 | **ICTT Cross-L1 Bridge** | ⏳ Planlanıyor | Avalanche audited ICTT inherit, lock/burn |
-| 4 | **Soulbound Credential** | ⏳ Planlanıyor | ERC-5114, eğitim sertifikası, ARIA-uyumlu |
-| 5 | **Treasury Multisig + Timelock** | ⏳ Planlanıyor | Safe-uyumlu, AccessManager, role-based |
+| 1 | **ERC-20 + Custom Gas Token** | 🚧 Geliştiriliyor | Subnet-EVM için native gas token — `Ownable2Step`, `Capped`, `Permit` (EIP-2612) |
+| 2 | **ERC-721 NFT Collection** | ⏳ Planlanıyor | Allowlist (Merkle), royalty (ERC-2981), IPFS metadata, pause |
+| 3 | **ICTT Cross-L1 Köprü** | ⏳ Planlanıyor | `ava-labs/icm-contracts` audited inherit — Token Home + Token Remote |
+| 4 | **Soulbound Credential** | ⏳ Planlanıyor | ERC-5114, eğitim sertifikası, ARIA Hub-uyumlu |
+| 5 | **Treasury Multisig + Timelock** | ⏳ Planlanıyor | Safe-uyumlu, `AccessManager`, role-based |
+
+Her şablon:
+- ✅ Solidity 0.8.34 + OpenZeppelin v5.3+ inherit
+- ✅ Foundry test (unit + invariant + fuzz, ≥10000 runs)
+- ✅ Slither + Aderyn statik analiz
+- ✅ Türkçe deployment rehberi
+- ✅ Fuji testnet'te çalışan deploy script
 
 ---
 
 ## 🚀 Hızlı Başlangıç
 
-> ⚠️ Phase 1 aktif geliştirmede. Stable release henüz yok.
-
 ### Gereksinimler
 
 - [Foundry](https://book.getfoundry.sh/getting-started/installation) (1.5+)
-- [Avalanche CLI](https://docs.avax.network/tooling/avalanche-cli) (custom L1 deploy için, opsiyonel)
 - Node.js 18+ (frontend için, Phase 3)
 - Fuji testnet AVAX → [faucet.avax.network](https://faucet.avax.network/)
+- _(Opsiyonel)_ [Avalanche CLI](https://docs.avax.network/tooling/avalanche-cli) — custom L1 deploy için
 
 ### Kurulum
 
 ```bash
 git clone https://github.com/Bekirerdem/koza-l1.git
 cd koza-l1
-forge install
+forge install              # forge-std + OpenZeppelin v5.3 + ava-labs/icm-contracts
 forge build
-forge test -vvv
+forge test -vvv            # unit + invariant + fuzz testler
 ```
 
-### Bir Template Deploy Et (Örnek: ERC-20 Custom Gas)
+### Bir Şablonu Deploy Et (Örnek: ERC-20 Custom Gas)
 
 ```bash
-cp .env.example .env   # PRIVATE_KEY ve diğer değerleri doldur
+cp .env.example .env       # PRIVATE_KEY, RPC, Snowtrace API key doldur
 forge script script/deploy/DeployERC20Gas.s.sol \
     --rpc-url fuji \
     --broadcast \
@@ -78,56 +138,79 @@ forge script script/deploy/DeployERC20Gas.s.sol \
 
 ---
 
-## 📚 Dokümantasyon
+## ❓ Niye Avalanche?
 
-Türkçe ve İngilizce dokümantasyon `/docs/` altında:
+| Avantaj | Anlamı |
+|---|---|
+| **Avalanche9000 / Etna upgrade** | L1 kurulumu Ethereum L2'lerden çok daha ucuz (%99 maliyet düşüşü) |
+| **ICM / ICTT** | Native cross-L1 mesajlaşma — bridge yok, ekstra trust assumption yok |
+| **Sub-second finality** | L2'lerin günlerce sürebilen withdrawal bekleme süresi yok |
+| **Custom Gas Token** | Kendi token'ınla gas öder, AVAX bağımlılığı yok |
+| **Audited primitive'ler** | `ava-labs/icm-contracts`'tan miras al, bridge yazma riski yok |
+| **Türk topluluk** | [Team1 TR](https://team1.blog) — Avalanche'a en aktif lokal topluluk |
 
-- [`docs/tr/00-baslangic.md`](./docs/tr/00-baslangic.md) — Sıfırdan kuruluma rehber
-- [`docs/tr/01-avalanche-101.md`](./docs/tr/01-avalanche-101.md) — Avalanche9000, ICM, ICTT, Subnet-EVM özeti
-- [`docs/tr/02-l1-deploy.md`](./docs/tr/02-l1-deploy.md) — Kendi L1'ini deploy et
-- [`docs/tr/03-templateler/`](./docs/tr/03-templateler/) — Her template için adım adım rehber
-- [`docs/tr/04-guvenlik.md`](./docs/tr/04-guvenlik.md) — Audit-grade güvenlik checklist
+---
+
+## 🗺️ Yol Haritası
+
+```
+┌──────────────────────┬──────────────────────┬──────────────────────┐
+│  Phase 1 (şu an)     │  Phase 2             │  Phase 3             │
+├──────────────────────┼──────────────────────┼──────────────────────┤
+│ ✅ Repo + CI setup   │ ⏳ CLI wrapper        │ ⏳ Web dashboard     │
+│ 🚧 5 şablon          │ ⏳ Daha fazla şablon  │ ⏳ "1-tıkla deploy"  │
+│ 🚧 Türkçe docs       │ ⏳ Retro9000 başvuru  │ ⏳ Builder Hub PR    │
+│ ⏳ Slither/Aderyn    │ ⏳ Bug bounty live    │ ⏳ Codebase başvuru  │
+│ ⏳ ARIA Hub pilot    │                      │                      │
+└──────────────────────┴──────────────────────┴──────────────────────┘
+```
 
 ---
 
 ## 🛡️ Güvenlik
 
-Tüm template'ler aşağıdaki güvenlik standartlarına uyar:
+Tüm şablonlar:
+- ✅ **Solidity 0.8.34** (IR storage bug fix sonrası)
+- ✅ **OpenZeppelin v5.3+** (`Ownable2Step`, `AccessManager`, ERC-7201 namespaced storage)
+- ✅ **Custom errors** (gas + audit kalitesi)
+- ✅ **Foundry fuzz/invariant** (≥10000 runs)
+- ✅ **Slither + Aderyn** statik analiz (CI)
+- ✅ **`ava-labs/icm-contracts`** audited primitive'ler (custom bridge yazılmaz)
 
-- ✅ Solidity ≥ 0.8.34 (IR storage bug fix sonrası)
-- ✅ OpenZeppelin Contracts v5.3+ (Ownable2Step, AccessManager, ERC-7201 namespaced storage)
-- ✅ Custom errors (gas + audit kalitesi)
-- ✅ Foundry fuzz/invariant test (≥ 10000 runs)
-- ✅ Slither + Aderyn + Halmos static/symbolic analiz
-- ✅ Bug bounty (Phase 1 sonu Immunefi'da canlı)
+> ⚠️ **Bu kod henüz profesyonel audit'ten geçmemiştir.** Production deployment öncesi Sherlock veya Cantina contest planlanıyor (Phase 1 sonu).
 
-Güvenlik açığı bildirimi: [`SECURITY.md`](./SECURITY.md) okuyun.
-
-> ⚠️ **Bu kod henüz audit edilmemiştir.** Production deployment öncesi Sherlock veya Cantina contest yapılması planlanıyor (Phase 1 sonu).
+Güvenlik açığı bildirimi: [`SECURITY.md`](./SECURITY.md)
 
 ---
 
 ## 🤝 Katkı
 
-Katkıda bulunmak ister misin? [`CONTRIBUTING.md`](./CONTRIBUTING.md) okuyup başlayabilirsin. Türkçe ve İngilizce katkı kabul edilir.
+Hem Türkçe hem İngilizce katkı kabul edilir. Detaylar: [`CONTRIBUTING.md`](./CONTRIBUTING.md)
 
 ---
 
 ## 📄 Lisans
 
-[MIT](./LICENSE) — Bekir Erdem © 2026
+[MIT](./LICENSE)
 
 ---
 
 ## 🙏 Teşekkürler
 
-- [Avalanche Foundation](https://www.avax.network/) — ekosistem ve ICM/ICTT audited contract'lar
-- [OpenZeppelin](https://www.openzeppelin.com/) — ekosistem güvenlik standartları
-- [Cyfrin Updraft](https://updraft.cyfrin.io/) — Avalanche L1 development materyalleri
-- [Team1 Türkiye](https://team1.blog/) — Türkiye'de Avalanche topluluğu
+Bu proje aşağıdaki ekosistemler ve toplulukların omuzlarında yükseliyor:
+
+- **[Avalanche Foundation](https://www.avax.network/)** — ekosistem ve `ava-labs/icm-contracts` audited contract'lar
+- **[OpenZeppelin](https://www.openzeppelin.com/)** — sektör standartı güvenlik kütüphanesi
+- **[Cyfrin Updraft](https://updraft.cyfrin.io/)** — Avalanche L1 development eğitim materyalleri
+- **[Team1 Türkiye](https://team1.blog/)** — Türkiye'nin Avalanche topluluğu
+- **[ARIA Hub](https://ariaeducation.org)** — Türkiye'de Avalanche eğitim platformu
 
 ---
 
-<p align="center">
-  <em>Türkiye'de Avalanche L1 ekosistemi inşaa ediliyor. 🏔️</em>
-</p>
+<div align="center">
+
+**Türkiye'de Avalanche L1 ekosistemi inşa ediliyor.** 🏔️
+
+Built with ❤️ by [**Bekir Erdem**](https://github.com/Bekirerdem)
+
+</div>
