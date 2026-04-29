@@ -32,6 +32,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Tests 1B**: `test/templates/ERC20Gas.t.sol` — 26 unit + fuzz tests covering constructor, mint, burn, ERC-20 standard, ERC-2612 permit (valid/expired/replay), Ownable2Step (transfer, accept, cancel)
 - **Invariants 1B**: `test/templates/ERC20Gas.invariants.t.sol` — handler-based stateful fuzzing with 3 invariants (totalSupply ≤ cap, sum(balances) == totalSupply, owner immutable)
 - **Coverage**: 100% lines / statements / branches / functions on KozaGasToken.sol
+- **Deploy script 1C**: `script/deploy/DeployERC20Gas.s.sol` with two entry points: `run()` (env-driven for `forge script`) and `deploy(...)` (parametric, test-friendly)
+- **Smoke tests 1C**: `test/templates/DeployERC20Gas.t.sol` — 3 cases: defaults, custom params, no initial mint
+- `tasks/lessons.md` capturing Foundry env state pitfall, solc/pragma pinning, CI guard pattern, OZ-first audit-grade principle
 
 ### Coming Soon (Phase 1 Sprints)
 - v0.1.0 — ERC-20 + Custom Gas Token template
