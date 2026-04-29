@@ -1,0 +1,308 @@
+---
+---
+
+<section
+    class="relative w-full min-h-screen bg-bg-pure text-white pt-[88px] px-4 pb-4"
+>
+    <!-- Avalanche Style Grid: 4 columns (1 - 2 - 1) -->
+    <div class="w-full h-full min-h-[calc(100vh-104px)] grid grid-cols-1 lg:grid-cols-4 gap-4">
+        
+        <!-- ================= LEFT COLUMN ================= -->
+        <div class="flex flex-col gap-4">
+            <!-- Top Left: Pitch -->
+            <div
+                class="flex-[3] bg-bg-card-dark rounded-[32px] p-8 lg:p-10 flex flex-col justify-between gpu relative overflow-hidden group"
+                data-hero-block
+            >
+                <div class="relative z-10">
+                    <h1 class="font-sans font-bold leading-[1.05] tracking-tight text-4xl lg:text-[2.75rem] text-white">
+                        Türk geliştiriciler için Avalanche L1 starter kit.
+                    </h1>
+                    <p class="mt-8 text-sm lg:text-base text-white/60 leading-relaxed font-sans max-w-sm">
+                        Audit-grade Solidity şablonları, Subnet-EVM
+                        genesis konfigürasyonları, ICTT cross-L1
+                        köprü pattern'leri ve kapsamlı Türkçe rehber.
+                    </p>
+                </div>
+
+                <!-- Live Fuji Badge -->
+                <div class="mt-12 flex items-center gap-3 text-sm text-white/80 font-sans font-medium relative z-10">
+                    <span class="relative flex h-2.5 w-2.5">
+                        <span class="absolute inline-flex h-full w-full rounded-full bg-koza-red opacity-75 animate-ping"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-koza-red"></span>
+                    </span>
+                    <span>
+                        Live on Fuji Testnet
+                    </span>
+                </div>
+            </div>
+
+            <!-- Bottom Left: Powered By -->
+            <div
+                class="flex-[2] bg-gradient-to-br from-koza-red to-koza-red-hot rounded-[32px] p-8 lg:p-10 relative overflow-hidden gpu flex flex-col justify-end shadow-2xl"
+                data-hero-block
+            >
+                <!-- Background visual -->
+                <div class="absolute -right-12 -top-12 opacity-30 pointer-events-none mix-blend-overlay">
+                    <svg viewBox="0 0 200 200" class="w-64 h-64">
+                        <circle cx="100" cy="100" r="80" stroke="var(--color-white)" stroke-width="2" fill="none"/>
+                        <circle cx="100" cy="100" r="40" stroke="var(--color-white)" stroke-width="2" fill="none"/>
+                        <circle cx="100" cy="100" r="6" fill="var(--color-white)"/>
+                    </svg>
+                </div>
+
+                <div class="relative z-10">
+                    <h3 class="text-sm lg:text-base font-bold tracking-widest uppercase text-true-white mb-2">Powered By Avalanche</h3>
+                    <p class="text-xs lg:text-sm text-true-white/80 leading-relaxed font-medium">
+                        Avalanche9000 upgrade sonrası Sovereign L1 ve ICTT ile tam entegre mimari.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= CENTER COLUMN (Spans 2) ================= -->
+        <div
+            class="lg:col-span-2 bg-bg-card-dark rounded-[32px] relative overflow-hidden flex items-center justify-center min-h-[50vh] lg:min-h-0 gpu"
+            data-hero-block
+        >
+            <!-- Grid lines background -->
+            <svg class="absolute inset-0 w-full h-full opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="center-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="var(--color-white)" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#center-grid)" />
+            </svg>
+
+            <!-- Main Graphic: Abstract Node Network -->
+            <div class="relative z-10 w-full max-w-lg aspect-square flex items-center justify-center">
+                <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-2xl">
+                    <defs>
+                        <linearGradient id="nodeRed" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="var(--color-koza-red-hot)" />
+                            <stop offset="100%" stop-color="var(--color-koza-red)" />
+                        </linearGradient>
+                        <linearGradient id="nodeBlue" x1="0%" y1="100%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#2251DB" />
+                            <stop offset="100%" stop-color="#4C7BFF" />
+                        </linearGradient>
+                        <linearGradient id="nodeWhite" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="var(--color-white)" />
+                            <stop offset="100%" stop-color="var(--color-gray-500)" />
+                        </linearGradient>
+                        <filter id="glow-heavy" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="20" result="blur" />
+                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                        </filter>
+                        <filter id="glow-light" x="-30%" y="-30%" width="160%" height="160%">
+                            <feGaussianBlur stdDeviation="8" result="blur" />
+                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                        </filter>
+                    </defs>
+                    
+                    <!-- Base structural rings -->
+                    <circle cx="250" cy="250" r="160" stroke="var(--color-white)" stroke-opacity="0.05" stroke-width="1" fill="none" stroke-dasharray="4 8"/>
+                    <circle cx="250" cy="250" r="80" stroke="var(--color-white)" stroke-opacity="0.1" stroke-width="1" fill="none"/>
+                    
+                    <!-- Dynamic Connections and Orbitals Wrapper -->
+                    <g id="orbital-system">
+                        <g stroke="var(--color-white)" stroke-width="2" stroke-opacity="0.15" id="anim-lines">
+                            <!-- Core to Mid -->
+                            <line x1="250" y1="250" x2="250" y2="90" />
+                            <line x1="250" y1="250" x2="388" y2="330" />
+                            <line x1="250" y1="250" x2="112" y2="330" />
+                            <!-- Outer Web -->
+                            <line x1="250" y1="90" x2="388" y2="330" />
+                            <line x1="388" y1="330" x2="112" y2="330" />
+                            <line x1="112" y1="330" x2="250" y2="90" />
+                        </g>
+
+                        <!-- Orbiting Sub-nodes -->
+                        <g id="anim-orbitals">
+                            <!-- Top Orbital -->
+                            <g transform="translate(250, 90)">
+                                <g class="orbital-inner">
+                                    <circle cx="0" cy="0" r="28" fill="url(#nodeBlue)" filter="url(#glow-light)"/>
+                                    <circle cx="0" cy="0" r="12" fill="var(--color-white)" opacity="0.9"/>
+                                </g>
+                            </g>
+                            <!-- Bottom Right Orbital -->
+                            <g transform="translate(388, 330)">
+                                <g class="orbital-inner">
+                                    <circle cx="0" cy="0" r="24" fill="url(#nodeRed)" filter="url(#glow-light)"/>
+                                    <polygon points="0,-8 7,5 -7,5" fill="var(--color-white)" opacity="0.9"/>
+                                </g>
+                            </g>
+                            <!-- Bottom Left Orbital -->
+                            <g transform="translate(112, 330)">
+                                <g class="orbital-inner">
+                                    <circle cx="0" cy="0" r="24" fill="url(#nodeWhite)" filter="url(#glow-light)"/>
+                                    <rect x="-6" y="-6" width="12" height="12" fill="var(--color-bg-pure)" opacity="0.9"/>
+                                </g>
+                            </g>
+                        </g>
+
+                        <!-- Data particles moving along lines -->
+                        <circle id="particle-1" cx="250" cy="250" r="4" fill="var(--color-white)" filter="url(#glow-light)"/>
+                        <circle id="particle-2" cx="250" cy="250" r="4" fill="var(--color-koza-red)" filter="url(#glow-light)"/>
+                        <circle id="particle-3" cx="250" cy="250" r="4" fill="var(--color-koza-blue)" filter="url(#glow-light)"/>
+                    </g>
+
+                    <!-- Central Core Node -->
+                    <g id="anim-core" transform="translate(250, 250)">
+                        <circle cx="0" cy="0" r="45" fill="url(#nodeRed)" filter="url(#glow-heavy)"/>
+                        <circle cx="0" cy="0" r="35" fill="var(--color-bg-card-dark)"/>
+                        <!-- Inner Koza Crystal Graphic - Perfectly Centered -->
+                        <g fill="var(--color-white)" transform="translate(-12.8, -18.5)">
+                            <path d="M12.0384 28.6063V36.499L4.88019 34.9381L0.162576 26.9641L4.14569 23.2423L12.0384 28.6063Z"/>
+                            <path d="M9.50878 5.02504L3.39765 21.8014L0 24.9774L0.125803 20.1195L9.50878 5.02504Z"/>
+                            <path d="M20.6307 21.9398L12.8203 27.2477L5.01083 21.9398L12.8203 0.5L20.6307 21.9398Z"/>
+                            <path d="M25.6416 24.9774L22.2439 21.8014L16.1328 5.02504L25.5138 20.1195L25.6416 24.9774Z"/>
+                            <path d="M25.478 26.9641L20.7614 34.9381L13.6012 36.5V28.6063L21.4959 23.2423L25.478 26.9641Z"/>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+            
+            <!-- Foreground glowing blur -->
+            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-96 h-96 bg-koza-red/20 blur-[100px] rounded-full pointer-events-none"></div>
+        </div>
+
+        <!-- ================= RIGHT COLUMN ================= -->
+        <div class="flex flex-col gap-4">
+            <!-- Top Right: Developer Docs -->
+            <a href="https://github.com/Bekirerdem/koza-l1" target="_blank"
+                class="flex-[2] bg-bg-card-dark rounded-[32px] p-6 lg:p-8 flex flex-col justify-between gpu relative overflow-hidden group hover:bg-gray-700 transition-colors"
+                data-hero-block
+            >
+                <div class="absolute right-0 top-0 w-32 h-32 bg-koza-red/10 blur-[40px] rounded-full pointer-events-none"></div>
+                <div class="flex justify-between items-start z-10">
+                    <div class="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                    </div>
+                    <svg class="w-5 h-5 text-white/30 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </div>
+                <div class="z-10">
+                    <h3 class="text-white font-bold font-sans text-xl lg:text-2xl">Dokümantasyon</h3>
+                    <p class="text-white/60 text-sm mt-2 font-medium leading-relaxed">Avalanche9000 mimarisi ile L1 kurmak için kapsamlı rehber.</p>
+                </div>
+            </a>
+
+            <!-- Bottom Right: Explore -->
+            <div
+                class="flex-[3] bg-bg-card-dark rounded-[32px] p-6 lg:p-8 flex flex-col justify-between relative gpu group cursor-pointer hover:bg-gray-700 transition-colors avax-chamfer-tr"
+                data-hero-block
+                onclick="document.getElementById('ne-bu')?.scrollIntoView({behavior: 'smooth'})"
+            >
+                <div class="z-10 mt-2">
+                    <div class="text-white/50 text-xs mb-2 font-medium tracking-widest uppercase">Daha Fazla</div>
+                    <div class="text-white font-sans text-2xl lg:text-4xl font-bold tracking-tight leading-tight">Koza-L1'i<br/>Keşfet</div>
+                </div>
+
+                <div class="flex justify-between items-end z-10">
+                    <div class="w-14 h-14 bg-koza-red rounded-full flex items-center justify-center group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(232,65,66,0.4)] transition-all duration-300">
+                        <svg class="w-6 h-6 text-true-white group-hover:translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                    </div>
+                    <!-- Subtle Koza Logo decoration -->
+                    <svg width="80" height="80" viewBox="0 0 26 37" fill="currentColor" class="text-white pointer-events-none opacity-[0.03] group-hover:opacity-[0.08] transition-opacity">
+                        <path d="M12.0384 28.6063V36.499L4.88019 34.9381L0.162576 26.9641L4.14569 23.2423L12.0384 28.6063Z"/>
+                        <path d="M9.50878 5.02504L3.39765 21.8014L0 24.9774L0.125803 20.1195L9.50878 5.02504Z"/>
+                        <path d="M20.6307 21.9398L12.8203 27.2477L5.01083 21.9398L12.8203 0.5L20.6307 21.9398Z"/>
+                        <path d="M25.6416 24.9774L22.2439 21.8014L16.1328 5.02504L25.5138 20.1195L25.6416 24.9774Z"/>
+                        <path d="M25.478 26.9641L20.7614 34.9381L13.6012 36.5V28.6063L21.4959 23.2423L25.478 26.9641Z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    import {gsap} from "gsap";
+
+    document.fonts.ready.then(() => {
+        const blocks = document.querySelectorAll("[data-hero-block]");
+        const tl = gsap.timeline({defaults: {ease: "power3.out"}});
+
+        // Blocks fade-up stagger
+        tl.from(blocks, {
+            y: 40,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.1,
+        });
+
+        // SVG Node Animation
+        // (master timeline reserved for sequencing future SVG steps)
+
+        // 1. Core pulsing
+        gsap.to("#anim-core", {
+            scale: 1.05,
+            duration: 2,
+            yoyo: true,
+            repeat: -1,
+            ease: "sine.inOut",
+            transformOrigin: "center"
+        });
+
+        // 2. Orbital System continuous satellite rotation
+        gsap.to("#orbital-system", {
+            rotation: 360,
+            duration: 40,
+            repeat: -1,
+            ease: "none",
+            svgOrigin: "250 250"
+        });
+
+        // 3. Orbitals internal spin (Counter-rotation to stay upright)
+        const orbitals = document.querySelectorAll(".orbital-inner");
+        orbitals.forEach((orbital) => {
+            gsap.to(orbital, {
+                rotation: -360, 
+                duration: 40, // Match the parent orbital system duration exactly
+                repeat: -1,
+                ease: "none",
+                transformOrigin: "center" // Perfect local center based on symmetric bounding box
+            });
+        });
+
+        // 3. Lines opacity breathing
+        gsap.to("#anim-lines line", {
+            strokeOpacity: 0.4,
+            duration: 1.5,
+            stagger: {
+                each: 0.2,
+                yoyo: true,
+                repeat: -1
+            },
+            ease: "sine.inOut"
+        });
+
+        // 4. Data particles moving
+        // Particle 1: Center to Top
+        gsap.fromTo("#particle-1", 
+            { x: 0, y: 0, opacity: 0 },
+            { x: 0, y: -160, opacity: 1, duration: 2, repeat: -1, ease: "power1.inOut", yoyo: true }
+        );
+        
+        // Particle 2: Center to Bottom Right
+        gsap.fromTo("#particle-2", 
+            { x: 0, y: 0, opacity: 0 },
+            { x: 138, y: 80, opacity: 1, duration: 2.5, delay: 0.5, repeat: -1, ease: "power1.inOut", yoyo: true }
+        );
+
+        // Particle 3: Center to Bottom Left
+        gsap.fromTo("#particle-3", 
+            { x: 0, y: 0, opacity: 0 },
+            { x: -138, y: 80, opacity: 1, duration: 2.2, delay: 1, repeat: -1, ease: "power1.inOut", yoyo: true }
+        );
+    });
+</script>
