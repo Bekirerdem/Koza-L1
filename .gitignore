@@ -1,0 +1,42 @@
+# Foundry
+cache/
+out/
+broadcast/
+.build/
+
+# Node / Frontend (gelecek faz)
+node_modules/
+dist/
+.next/
+.turbo/
+
+# Secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+
+# Coverage
+coverage/
+lcov.info
+
+# Foundry artifacts that should NOT be committed
+**/forge-cache/
+**/foundry-cache/
+
+# Local artifacts
+deployments-local/
