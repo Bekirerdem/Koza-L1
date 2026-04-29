@@ -17,6 +17,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - SECURITY.md disclosure policy
 - CONTRIBUTING.md (Türkçe + English)
 - `.env.example` with Teleporter messenger address
+- GitHub Actions CI workflows (build/test/slither/aderyn + release)
+- README v2: branding (`koza-L1`), badges (CI, License, Solidity, Foundry, Avalanche, OZ), ASCII architecture diagram, value proposition, Phase 1/2/3 roadmap, "Why Avalanche?" section
+
+### Fixed
+- CI: Slither and Aderyn jobs now skip when `src/` has no Solidity files (Sprint 0 → Sprint 1 transition)
+- CI: Aderyn switched from `cargo install` (upstream svm-rs-builds bug) to pre-built binary installer
+- CI: `actions/checkout` upgraded to v5 (Node 24 compat)
+- README: clarified ecosystem positioning (production-grade Türkçe toolkit pozisyonu, "anadilde rehber yok" abartısı düzeltildi)
 
 ### Coming Soon (Phase 1 Sprints)
 - v0.1.0 — ERC-20 + Custom Gas Token template
