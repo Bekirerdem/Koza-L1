@@ -38,6 +38,33 @@ Snowtrace source verification pending — Routescan free-tier API key blocked by
 
 ## [Unreleased]
 
+### Added (Sprint 2 — Template 2 ERC-721 NFT Collection)
+
+- **Template 2**: `src/templates/erc721-collection/KozaCollection.sol` — ERC-721 +
+  ERC-2981 royalty + Ownable2Step + Merkle allowlist + 3-faz mint kontrolü
+  (Closed/Allowlist/Public). 100% test coverage; OpenZeppelin v5.3+ pattern'leri
+- **Tests 2B**: `test/templates/ERC721Collection.t.sol` — 30+ unit + fuzz test:
+  constructor (max supply 0, royalty too high/zero), publicMint, allowlistMint
+  (Merkle proof valid/invalid/already-claimed), per-wallet limit, max supply,
+  owner-only setter'lar, withdraw (success + rejecting receiver), Ownable2Step
+- **Invariants 2B+**: `test/templates/ERC721Collection.invariants.t.sol` —
+  handler-based stateful fuzzing, 4 invariant: `totalMinted ≤ maxSupply`,
+  `sum(balances) == totalMinted` (token leak yok), `contract.balance ==
+  paid - withdrawn`, owner immutable. 1000 run × 100k call'da sıfır revert
+- **Coverage**: 100% lines / statements / branches / functions on `KozaCollection.sol`
+- **Deploy script 2C**: `script/deploy/DeployERC721Collection.s.sol` —
+  `run()` (env-driven) + `deploy(...)` (parametric, test-friendly) ikili giriş
+- **Smoke tests 2C**: `test/templates/DeployERC721Collection.t.sol` — defaults,
+  custom params, free mint + zero royalty
+- **Genesis 2D**: `genesis/erc721-collection.json` — Avalanche9000 Subnet-EVM,
+  NFT-odaklı L1 için custom gas, ICM (Warp) açık, contractDeployerAllowList +
+  txAllowListConfig placeholder'ları (mainnet için zorunlu)
+- **Türkçe rehber 2E**: `docs/tr/03-templateler/erc721-collection.md` (370+ satır):
+  3 senaryo (sanat, DAO üyelik, utility), Avalanche/Solidity özellikleri, audit-grade
+  güvenlik uyarıları (8 madde), Merkle root üretim helper'ı (viem +
+  @openzeppelin/merkle-tree), step-by-step Fuji deploy + allowlist yönetimi,
+  IPFS metadata + reveal mekaniği, ortak hatalar + çözümleri, gas maliyet tablosu
+
 ### Added
 - Project initialized (Phase 1 Sprint 0, 2026-04-29)
 - Foundry config (Solidity 0.8.34, optimizer 200, via_ir, fuzz 10000, invariant 1000)
@@ -133,7 +160,7 @@ type-error cleanup.
 ### Coming Soon (Phase 1 Sprints)
 - v0.1.0 — ERC-20 + Custom Gas Token template ✅
 - v0.1.1 — Snowtrace verify retry (Sprint 1G follow-up) ✅
-- v0.2.0 — ERC-721 Collection (allowlist + royalty)
+- v0.2.0 — ERC-721 Collection (allowlist + royalty) — **kod hazır, Fuji deploy + verify bekliyor**
 - v0.3.0 — ICTT Cross-L1 Bridge
 - v0.4.0 — Soulbound Credential (ERC-5114)
 - v0.5.0 — Treasury Multisig + Timelock
