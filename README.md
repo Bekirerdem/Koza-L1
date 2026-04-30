@@ -1,6 +1,8 @@
 <div align="center">
 
-# 🏔️ KOZA-L1
+<img src="./.github/assets/koza-logo.svg" alt="KOZA-L1 logo" width="56" />
+
+# KOZA-L1
 
 **Türk geliştiriciler için Avalanche L1 starter kit**
 
