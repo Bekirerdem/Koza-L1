@@ -4,7 +4,9 @@ out = "out"
 libs = ["lib"]
 test = "test"
 script = "script"
-solc = "0.8.34"
+# solc pragma-driven (auto-detect). icm-contracts (ictt/Teleporter) sıkı `pragma 0.8.25`
+# pin'iyor; biz Sprint 1+2 template'lerinde 0.8.34 kullanıyoruz. Multi-version compile.
+auto_detect_solc = true
 optimizer = true
 optimizer_runs = 200
 via_ir = true
