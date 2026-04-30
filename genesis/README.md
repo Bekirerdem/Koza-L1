@@ -12,6 +12,14 @@ Bu klasör, Avalanche **Subnet-EVM** üzerinde kendi Sovereign L1'ini ayağa kal
 
 Avalanche9000 (Etna) sonrası **Sovereign L1** için, kendi native token'ınızla gas ödediğiniz minimal genesis. ICM (Interchain Messaging) aktif → diğer Avalanche L1'leriyle bridge'siz cross-L1 mesajlaşma yapabilirsiniz.
 
+### `erc721-collection.json` — NFT Collection L1
+
+NFT-odaklı bir uygulama zinciri. Kullanıcılar mint, transfer, marketplace etkileşimi yapar. ICM açık, contract deployer + tx allowlist mainnet için zorunlu placeholder'lar.
+
+### `ictt-bridge.json` — ICTT Cross-L1 Bridge için Hedef L1
+
+Inter-Chain Token Transfer (ICTT) ile başka bir L1'den gelen tokeni karşılayan **hedef** L1. Kritik özellik: `warpConfig` zorunlu (kapatılırsa bridge tamamen disable olur). Teleporter messenger contract'ı (`0x253b...5fcf`) **genesis'te pre-deploy edilmez** — Avalanche CLI `avalanche blockchain deploy` komutu otomatik yayar; manuel L1'lerde post-deploy adımı zorunludur.
+
 ---
 
 ## 🛠️ Kullanım Senaryoları
@@ -29,6 +37,21 @@ avalanche blockchain create my-koza-l1 --custom \
 ### Senaryo B: Native + ERC-20 (ICTT Bridge)
 
 L1'in native'i KGAS, ek olarak C-Chain'de `KozaGasToken.sol` ERC-20 deploy edilir. **ICTT** ile iki tarafın token'ları bridge'lenir (Phase 1 Sprint 3'te detaylı).
+
+### Senaryo C: NFT Collection L1
+
+Bir NFT koleksiyonuna özel L1 (sanat, üyelik, utility). Kullanıcılar TKOZA gibi custom gas token ile mint öder. Genesis: `erc721-collection.json`.
+
+### Senaryo D: ICTT Hedef L1 (cross-L1 bridge alıcısı)
+
+Başka bir Avalanche L1'inden ICTT ile gelen tokeni `KozaTokenRemote` üzerinden temsil eder. Phase 1 default akışı: Fuji'de KGAS lock → bu L1'de wKGAS mint. Genesis: `ictt-bridge.json`. Kritik: `warpConfig` AÇIK olmalı, `quorumNumerator=67` ve `requirePrimaryNetworkSigners=true` korunmalı.
+
+```bash
+avalanche blockchain create my-bridge-target-l1 --custom \
+  --genesis ./genesis/ictt-bridge.json
+avalanche blockchain deploy my-bridge-target-l1 --local
+# CLI otomatik olarak Teleporter messenger'ı 0x253b...5fcf'ye yayar.
+```
 
 ---
 

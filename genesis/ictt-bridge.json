@@ -1,0 +1,61 @@
+{
+  "_comment": "koza-L1 Template 3 — ICTT Cross-L1 Bridge için örnek Avalanche9000 Subnet-EVM genesis. Bu L1, ICTT (Inter-Chain Token Transfer) ile başka bir L1'den (örn. Fuji/C-Chain) gelen tokeni karşılayan **hedef** L1 senaryosudur. Kritik: ICM (Warp) MUTLAKA açık olmalı, aksi halde Teleporter messenger çalışmaz ve bridge tamamen disable olur. Teleporter messenger contract'ı (deterministic adres 0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf) genesis'te pre-deploy edilmez — Avalanche CLI ile L1 deploy edildikten sonra otomatik yayılır (avalanche blockchain deploy ... komutu zaten yapar). Manual L1'lerde post-deploy adımı zorunludur.",
+  "config": {
+    "chainID": 99997,
+    "homesteadBlock": 0,
+    "eip150Block": 0,
+    "eip155Block": 0,
+    "eip158Block": 0,
+    "byzantiumBlock": 0,
+    "constantinopleBlock": 0,
+    "petersburgBlock": 0,
+    "istanbulBlock": 0,
+    "muirGlacierBlock": 0,
+    "subnetEVMTimestamp": 0,
+    "feeConfig": {
+      "gasLimit": 15000000,
+      "targetBlockRate": 2,
+      "minBaseFee": 1000000000,
+      "targetGas": 15000000,
+      "baseFeeChangeDenominator": 36,
+      "minBlockGasCost": 0,
+      "maxBlockGasCost": 1000000,
+      "blockGasCostStep": 200000
+    },
+    "allowFeeRecipients": false,
+    "warpConfig": {
+      "blockTimestamp": 0,
+      "quorumNumerator": 67,
+      "requirePrimaryNetworkSigners": true,
+      "_comment": "ICTT bridge bu konfigürasyona TAMAMEN bağımlı. quorumNumerator 67 = Primary Network validator'larının ⅔'ünün Warp mesajını imzalaması gerek. requirePrimaryNetworkSigners=true production için zorunludur (sahte L1 saldırısına karşı koruma). Bu değerleri DÜŞÜRMEK güvenlik açığıdır."
+    },
+    "contractDeployerAllowListConfig": {
+      "blockTimestamp": 0,
+      "adminAddresses": [],
+      "enabledAddresses": [],
+      "_comment": "Mainnet'te ICTT bridge contract'larını yetkisiz tarafların yeniden deploy etmesini engellemek için MUTLAKA multisig admin doldurulmalıdır."
+    },
+    "txAllowListConfig": {
+      "blockTimestamp": 0,
+      "adminAddresses": [],
+      "enabledAddresses": [],
+      "_comment": "Opsiyonel: yalnızca whitelist edilmiş kullanıcıların L1'de tx göndermesine izin ver (regulated environment / institutional pilot için)."
+    }
+  },
+  "alloc": {
+    "0x0000000000000000000000000000000000000000": {
+      "balance": "0x0",
+      "_comment": "REPLACE WITH YOUR DEPLOYER ADDRESS — KozaTokenRemote deploy ücreti için ~0.5 native gas yeterli (örn. balance 0x6F05B59D3B20000 = 0.5 ether)."
+    }
+  },
+  "nonce": "0x0",
+  "timestamp": "0x0",
+  "extraData": "0x00",
+  "gasLimit": "0xE4E1C0",
+  "difficulty": "0x0",
+  "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "coinbase": "0x0000000000000000000000000000000000000000",
+  "number": "0x0",
+  "gasUsed": "0x0",
+  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+}
