@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Third template release: ICTT Cross-L1 Bridge (`KozaTokenHome` /
 `KozaTokenRemote`) is feature-complete, fully tested, documented in
-Türkçe, and **live on Fuji + kozaTestL1 yerel test L1**. Phase 1'in
+Türkçe, and **live on Fuji + kozalakTestL1 yerel test L1**. Phase 1'in
 en kritik template'i — `ava-labs/icm-contracts` audited inherit + Türkçe
 audit-grade rehber.
 
@@ -22,7 +22,7 @@ audit-grade rehber.
 - **Teleporter Registry:** `0xF86Cb19Ad8405AEFa7d09C778215D2Cb6eBfB228` (Avalanche resmi Fuji)
 - **Teleporter Manager:** deployer EOA (mainnet öncesi multisig'e migrate)
 
-**Remote (kozaTestL1, chain ID 9999, yerel Subnet-EVM):**
+**Remote (kozalakTestL1, chain ID 9999, yerel Subnet-EVM):**
 - **Contract:** `KozaTokenRemote` at `0x53c10844dD2A249eE488EeA66E7Df21365030ceB`
 - **Tx:** `0x5d7f16478e9e248a35af8e3ab84807371476850ad0c4545263c5733d7e0ab97a`
 - **Token meta:** `Wrapped Koza Gas` / `wKGAS` / 18 decimals
@@ -45,13 +45,13 @@ audit-grade rehber.
 
 ### Limitations & Follow-ups
 
-- **End-to-end live bridge demo (Fuji → kozaTestL1 KGAS transfer)
+- **End-to-end live bridge demo (Fuji → kozalakTestL1 KGAS transfer)
   beklemede.** Kontratlar canlı, smoke test'ler 6/6 yeşil, deploy
   + register mesajları broadcast'lendi; ama gerçek mesaj relay'i
   manuel `icm-relayer` setup gerektiriyor. Bu ek iş Sprint 7 (Launch)
   veya bağımsız bir 3.1 milestone'a ertelendi — Phase 1 audit-grade
   boilerplate hedefi etkilenmez.
-- Fork test'ler (Fuji + kozaTestL1 üzerinden gerçek mesaj relay testi)
+- Fork test'ler (Fuji + kozalakTestL1 üzerinden gerçek mesaj relay testi)
   aynı sebepten ertelenmiştir; smoke test'ler `vm.etch + vm.mockCall`
   pattern'iyle Warp precompile'ı simüle ediyor.
 
@@ -128,9 +128,9 @@ detaylı geçmiş içindir; özet için `[0.3.0]` bölümüne bakın.
 - **Template 3**: `src/templates/ictt-bridge/KozaTokenHome.sol` ve
   `KozaTokenRemote.sol` — `ava-labs/icm-contracts` ERC20TokenHome /
   ERC20TokenRemote audited inherit. Custom logic minimum (audit-grade
-  prensibi). Phase 1 default senaryosu: Fuji KGAS lock → kozaTestL1
+  prensibi). Phase 1 default senaryosu: Fuji KGAS lock → kozalakTestL1
   wKGAS mint.
-- **Yerel test L1 (kozaTestL1)**: WSL/Ubuntu'da Avalanche CLI ile
+- **Yerel test L1 (kozalakTestL1)**: WSL/Ubuntu'da Avalanche CLI ile
   spawn — Subnet-EVM PoA, chain ID 9999, TKOZA gas token, ICM açık,
   Teleporter messenger `0x253b...5fcf` deterministic deploy edilmiş.
   RPC: `http://127.0.0.1:9654/ext/bc/2s1JmPhG.../rpc` (Windows ↔ WSL
@@ -146,7 +146,7 @@ detaylı geçmiş içindir; özet için `[0.3.0]` bölümüne bakın.
   - `script/deploy/DeployTokenHome.s.sol` — Fuji'ye `KozaTokenHome` yayar.
     Default Teleporter Registry: `0xF86Cb19Ad8405AEFa7d09C778215D2Cb6eBfB228`
     (Avalanche resmi); default token: KGAS v0.1.0.
-  - `script/deploy/DeployTokenRemote.s.sol` — kozaTestL1'e
+  - `script/deploy/DeployTokenRemote.s.sol` — kozalakTestL1'e
     `KozaTokenRemote` yayar. `REMOTE_TOKEN_HOME_BLOCKCHAIN_ID` ve
     `REMOTE_TOKEN_HOME_ADDRESS` env'den okur.
   - İkisi de Sprint 1/2 pattern'iyle: `run()` (env-driven) + `deploy(...)`
@@ -263,8 +263,8 @@ type-error cleanup.
   `<span class="split-line">` (semantic HTML — `<h2>` may not contain
   block-level `<div>`)
 - `StackingCards.astro`: replaced arbitrary hex `bg-[#B8232C]` /
-  `bg-[#0046C8]` with theme-token utilities `bg-koza-red-deep` /
-  `bg-koza-blue-deep` (Tailwind LSP autocomplete now resolves; tokens
+  `bg-[#0046C8]` with theme-token utilities `bg-kozalak-red-deep` /
+  `bg-kozalak-blue-deep` (Tailwind LSP autocomplete now resolves; tokens
   centralized for theme consistency)
 
 ### Coming Soon (Phase 1 Sprints)
@@ -272,7 +272,7 @@ type-error cleanup.
 - v0.1.1 — Snowtrace verify retry (Sprint 1G follow-up) ✅
 - v0.2.0 — ERC-721 Collection (allowlist + royalty) ✅
 - v0.3.0 — ICTT Cross-L1 Bridge ✅
-- v0.3.1 — End-to-end Fuji ↔ kozaTestL1 live bridge demo (icm-relayer setup)
+- v0.3.1 — End-to-end Fuji ↔ kozalakTestL1 live bridge demo (icm-relayer setup)
 - v0.4.0 — Soulbound Credential (ERC-5114)
 - v0.5.0 — Treasury Multisig + Timelock
 - v0.6.0 — EN docs + landing site polish

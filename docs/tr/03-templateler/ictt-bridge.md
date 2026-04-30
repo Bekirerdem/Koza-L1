@@ -31,17 +31,17 @@ kontrat-çifti ile destekler. Phase 1 default'u **Senaryo B**.
   L1'e taşımak. Türk geliştirici ekosistemi için en eğitici akış.
 - **Home contract:** `KozaTokenHome` (ERC20TokenHome inherit).
 - **Remote contract:** `KozaTokenRemote` (ERC20TokenRemote inherit).
-- **Akış:** Fuji'de KGAS approve + lock → kozaTestL1'de wKGAS mint. Geri
+- **Akış:** Fuji'de KGAS approve + lock → kozalakTestL1'de wKGAS mint. Geri
   yönde wKGAS burn → Fuji'de KGAS unlock.
 - **Avantaj:** En yaygın "wrapped token" mental modeli, kullanıcı UX'i basit.
 
-### Senaryo C — ERC-20 → Native gas token (KGAS → kozaTestL1 native TKOZA mint)
+### Senaryo C — ERC-20 → Native gas token (KGAS → kozalakTestL1 native TKOZA mint)
 
 - **Kim için:** Avalanche9000'in en güçlü pattern'i — bridge ile gelen token,
   hedef L1'in **native fee parası** olur. Tokenomics olarak en bütünleşik.
 - **Home contract:** `KozaTokenHome` (ERC20TokenHome inherit, mevcut hali).
 - **Remote contract:** `NativeTokenRemote` inherit (KozaTokenRemote yerine).
-- **Akış:** Fuji'de KGAS lock → kozaTestL1'de **native TKOZA mint** (validator'a
+- **Akış:** Fuji'de KGAS lock → kozalakTestL1'de **native TKOZA mint** (validator'a
   gas olarak geri verilebilir).
 - **Riski:** Initial supply ve gas tokenomic'inin ICTT supply ile uyumlu kurulması
   gerek; yanlış parametrelerle deflasyon/enflasyon spirali oluşabilir.
@@ -162,7 +162,7 @@ miktar bozulması.
 
 - [x] Avalanche CLI v1.9.6+ kurulu (WSL/Linux/macOS)
   - Windows için: `bash scripts/setup/install-avalanche-cli.sh`
-- [x] Yerel L1 spawn edilmiş: `avalanche blockchain create kozaTestL1 && avalanche blockchain deploy kozaTestL1`
+- [x] Yerel L1 spawn edilmiş: `avalanche blockchain create kozalakTestL1 && avalanche blockchain deploy kozalakTestL1`
 - [x] Fuji'de KGAS token canlı: `0x06451DD4Fb8ebFC19870DacC9568f4364D2A2eB0`
 - [x] `.env` `PRIVATE_KEY` + `SNOWTRACE_API_KEY` doluymalı
 
@@ -187,10 +187,10 @@ forge script script/deploy/DeployTokenHome.s.sol \
 `Default'lar:` Fuji Teleporter Registry, KGAS token (v0.1.0), 18 decimals,
 deployer EOA = manager. Deploy çıktısında **KozaTokenHome adresini** kaydet.
 
-### 3. kozaTestL1 Teleporter Registry adresini öğren (WSL içinde)
+### 3. kozalakTestL1 Teleporter Registry adresini öğren (WSL içinde)
 
 ```bash
-avalanche blockchain describe kozaTestL1 | grep -A 2 "Teleporter Registry"
+avalanche blockchain describe kozalakTestL1 | grep -A 2 "Teleporter Registry"
 ```
 
 ### 4. `.env`'i güncelle
@@ -201,11 +201,11 @@ REMOTE_TOKEN_HOME_BLOCKCHAIN_ID=<1.adımdan, bytes32>
 REMOTE_TOKEN_HOME_ADDRESS=<2.adımdan>
 ```
 
-### 5. KozaTokenRemote'u kozaTestL1'e deploy et
+### 5. KozaTokenRemote'u kozalakTestL1'e deploy et
 
 ```bash
 forge script script/deploy/DeployTokenRemote.s.sol \
-  --rpc-url $KOZA_TEST_L1_RPC_URL --broadcast
+  --rpc-url $KOZALAK_TEST_L1_RPC_URL --broadcast
 ```
 
 Yerel L1'de Routescan/Snowtrace yok; verify atla.
@@ -215,14 +215,14 @@ Yerel L1'de Routescan/Snowtrace yok; verify atla.
 ```bash
 cast send $REMOTE_ADDRESS "registerWithHome((address,uint256))" \
   "(0x0000000000000000000000000000000000000000,0)" \
-  --rpc-url $KOZA_TEST_L1_RPC_URL \
+  --rpc-url $KOZALAK_TEST_L1_RPC_URL \
   --private-key $PRIVATE_KEY
 ```
 
 `feeInfo` boş geçilebilir (relayer ücreti yok). Bu mesaj Home tarafına
 "Ben buradayım, mesaj alabilirim" der. Yapılmazsa `send()` revert eder.
 
-### 7. Test transfer — Fuji'den kozaTestL1'e KGAS
+### 7. Test transfer — Fuji'den kozalakTestL1'e KGAS
 
 ```bash
 # 7a. Fuji'de KGAS approve et:
@@ -237,9 +237,9 @@ cast send $HOME_ADDRESS \
   1000000000000000000 \
   --rpc-url fuji --private-key $PRIVATE_KEY
 
-# 7c. icm-relayer çalışıyorsa kozaTestL1'de mint görülür:
+# 7c. icm-relayer çalışıyorsa kozalakTestL1'de mint görülür:
 cast call $REMOTE_ADDRESS "balanceOf(address)" $RECIPIENT \
-  --rpc-url $KOZA_TEST_L1_RPC_URL
+  --rpc-url $KOZALAK_TEST_L1_RPC_URL
 ```
 
 ### 8. Relayer not'u

@@ -14,12 +14,12 @@
     --color-bg-card-light: #f8f8f6;
 
     /* === BRAND === */
-    --color-koza-red: #e84142;
-    --color-koza-red-hot: #ff394a;
-    --color-koza-red-deep: #b8232c; /* stack card 01 */
-    --color-koza-orange: #ff6b35;
-    --color-koza-blue: #2251db; /* Avalanche blue */
-    --color-koza-blue-deep: #0046c8; /* stack card 02 */
+    --color-kozalak-red: #e84142;
+    --color-kozalak-red-hot: #ff394a;
+    --color-kozalak-red-deep: #b8232c; /* stack card 01 */
+    --color-kozalak-orange: #ff6b35;
+    --color-kozalak-blue: #2251db; /* Avalanche blue */
+    --color-kozalak-blue-deep: #0046c8; /* stack card 02 */
 
     /* === NEUTRAL === */
     --color-white: #ffffff;
@@ -227,6 +227,6 @@ html.lenis body {
 
 /* === SELECTION === */
 ::selection {
-    background: var(--color-koza-red);
+    background: var(--color-kozalak-red);
     color: var(--color-white);
 }
