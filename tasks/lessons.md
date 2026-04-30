@@ -63,3 +63,34 @@ function deploy(string memory name, ...) public returns (Token, address) {
 **Çözüm:** Constructor body'de redundant check yapma. Parent error'larına güven (`OwnableInvalidOwner`, `ERC20InvalidCap`). Custom logic gerektiren check'leri (örn. `initialMint > cap`) bırak.
 
 **Audit-grade prensibi:** "Minimum custom logic" — OZ/ava-labs'in audited primitive'lerine güven, kendi katmanını ince tut.
+
+## 2026-04-30
+
+### `foundry.toml` `[etherscan]` interpolation Routescan ile flaky
+
+**Problem:** `forge script ... --verify` ve `forge verify-contract <addr> ... --chain fuji` çağrılarında `[etherscan]` bölümünden gelen `${SNOWTRACE_API_KEY}` interpolation'ı zaman zaman `Invalid API Key` hatası veriyor — özellikle deploy hemen sonrası verify'da. Aynı API key process env'de doğru, doğru `rs_` prefix'li ve doğru endpoint'e set edilmiş olsa bile.
+
+**Belirti:**
+```
+Error: Failed to obtain contract ABI for 0x...
+Context:
+- Invalid API Key
+```
+
+**Hipotez:** Forge'un internal Etherscan handler'ı toml'dan okurken bazen `key` field'ını tam olarak resolve etmeden kullanıyor (özellikle Routescan endpoint'inde "verify-then-fetch" iki adımlı flow varken).
+
+**Çözüm:** Verify çağrılarında **explicit flag'leri kullan**, toml interpolation'ına güvenme:
+
+```bash
+forge verify-contract <ADDR> <PATH>:<NAME> \
+  --verifier-url "https://api.routescan.io/v2/network/testnet/evm/43113/etherscan" \
+  --etherscan-api-key "$SNOWTRACE_API_KEY" \
+  --chain 43113 \
+  --watch \
+  --retries 4 --delay 30 \
+  --constructor-args $(cast abi-encode "<sig>" <args...>)
+```
+
+`forge script ... --verify` flow'unda da aynı flag'leri pass etmek gerekirse, deploy'u `--broadcast` ile yapıp verify'ı **ayrı `forge verify-contract`** çağrısıyla yürütmek en güvenli yol.
+
+**Genel kural:** CI/CD ve manuel deploy script'lerinde Etherscan-uyumlu verify çağrılarını **explicit `--verifier-url` + `--etherscan-api-key`** ile yaz. `foundry.toml` interpolation'ı dokümante edilmiş ama production-ready değil — özellikle Routescan gibi 3rd party Etherscan klonlarında.
