@@ -211,23 +211,41 @@ Contract 24KB üzerinde. Bizim KozaGasToken **4KB** olduğu için bu olmamalı. 
 
 ### `Snowtrace verification failed`
 
-Çok yaygın sebep: `SNOWTRACE_API_KEY` eksik veya yanlış. Routescan ücretsiz tier için `verifyContract` literal string kabul ediyor. `.env`'de:
+Snowtrace.io artık Routescan altyapısında çalışıyor. `foundry.toml` v0.1.1'den
+itibaren etherscan endpoint'i olarak Routescan'i kullanıyor:
 
-```bash
-SNOWTRACE_API_KEY=verifyContract
+```toml
+[etherscan]
+fuji = { key = "${SNOWTRACE_API_KEY}", url = "https://api.routescan.io/v2/network/testnet/evm/43113/etherscan", chain = 43113 }
 ```
 
-Hala fail ediyorsa, manual verify:
+API key için iki seçenek:
+
+1. **Sahte key (rate-limit'li):** `.env`'de `SNOWTRACE_API_KEY=verifyContract` —
+   küçük projeler için yeterli, hız limiti var.
+2. **Gerçek key (önerilen):** [routescan.io](https://routescan.io) üzerinden
+   ücretsiz hesap aç, API key oluştur (`rs_` prefix'li 27 karakter). `.env`'e
+   ekle: `SNOWTRACE_API_KEY=rs_xxxxxxxxxxxxxxxxxxxxxxxx`.
+
+Hala fail ediyorsa manual verify (örnek `KozaGasToken` v0.1.0 deploy'u için):
 
 ```bash
 forge verify-contract \
-    --rpc-url fuji \
+    --chain-id 43113 \
+    --num-of-optimizations 200 \
+    --compiler-version 0.8.34 \
     --watch \
     --constructor-args $(cast abi-encode "constructor(string,string,uint256,uint256,address)" \
         "Koza Gas Token" "KGAS" 1000000000000000000000000 100000000000000000000000 0xOwner) \
+    --etherscan-api-key "$SNOWTRACE_API_KEY" \
+    --verifier-url 'https://api.routescan.io/v2/network/testnet/evm/43113/etherscan' \
     0xDeployedContractAddress \
     src/templates/erc20-gas/KozaGasToken.sol:KozaGasToken
 ```
+
+> ⚠️ Eski `api-testnet.snowtrace.io/api` endpoint'i Routescan'in `rs_` prefix'li
+> anahtarlarını tanımıyor — `Invalid API Key` hatası alırsan endpoint'in
+> Routescan URL'sine bakıp baktığını doğrula.
 
 ### `Permit signature replay attack` revert
 

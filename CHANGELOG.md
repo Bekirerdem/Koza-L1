@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] — 2026-04-30
+
+### Fixed
+
+- **Snowtrace verify**: `KozaGasToken` Fuji deploy'u artık Routescan üzerinden
+  doğrulanmış durumda. Eski `api-testnet.snowtrace.io/api` endpoint'i Routescan'in
+  yeni `rs_` formatlı API anahtarlarını tanımıyordu; `foundry.toml` etherscan
+  bölümü `https://api.routescan.io/v2/network/{testnet|mainnet}/evm/{43113|43114}/etherscan`
+  adreslerine güncellendi. Doğrulanmış kontrat:
+  [`0x06451...2eB0`](https://testnet.snowtrace.io/address/0x06451DD4Fb8ebFC19870DacC9568f4364D2A2eB0#code)
+  / [snowscan mirror](https://testnet.snowscan.xyz/address/0x06451dd4fb8ebfc19870dacc9568f4364d2a2eb0).
+
 ## [0.1.0] — 2026-04-29
 
 First public release: Template 1 (ERC-20 + Custom Gas Token) is feature-complete,
@@ -21,6 +33,8 @@ fully tested, documented in Türkçe, and **live on Fuji testnet**.
 ### Verification Status
 
 Snowtrace source verification pending — Routescan free-tier API key blocked by rate-limit / policy. Contract bytecode is live and all read functions confirmed via `cast call` (name, symbol, cap, totalSupply, owner all match expected). To be retried with a personal Snowtrace API key in v0.1.1.
+
+> **Update (v0.1.1):** Verify resolved by switching `foundry.toml` etherscan endpoint to Routescan; source code now public on Snowtrace/Snowscan.
 
 ## [Unreleased]
 
@@ -118,7 +132,7 @@ type-error cleanup.
 
 ### Coming Soon (Phase 1 Sprints)
 - v0.1.0 — ERC-20 + Custom Gas Token template ✅
-- v0.1.1 — Snowtrace verify retry (Sprint 1G follow-up)
+- v0.1.1 — Snowtrace verify retry (Sprint 1G follow-up) ✅
 - v0.2.0 — ERC-721 Collection (allowlist + royalty)
 - v0.3.0 — ICTT Cross-L1 Bridge
 - v0.4.0 — Soulbound Credential (ERC-5114)
@@ -127,5 +141,6 @@ type-error cleanup.
 
 ---
 
-[Unreleased]: https://github.com/Bekirerdem/koza-l1/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/Bekirerdem/koza-l1/releases/tag/v0.1.0
+[Unreleased]: https://github.com/Bekirerdem/Koza-L1/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/Bekirerdem/Koza-L1/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/Bekirerdem/Koza-L1/releases/tag/v0.1.0
