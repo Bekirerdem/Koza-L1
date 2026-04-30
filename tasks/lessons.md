@@ -94,3 +94,44 @@ forge verify-contract <ADDR> <PATH>:<NAME> \
 `forge script ... --verify` flow'unda da aynı flag'leri pass etmek gerekirse, deploy'u `--broadcast` ile yapıp verify'ı **ayrı `forge verify-contract`** çağrısıyla yürütmek en güvenli yol.
 
 **Genel kural:** CI/CD ve manuel deploy script'lerinde Etherscan-uyumlu verify çağrılarını **explicit `--verifier-url` + `--etherscan-api-key`** ile yaz. `foundry.toml` interpolation'ı dokümante edilmiş ama production-ready değil — özellikle Routescan gibi 3rd party Etherscan klonlarında.
+
+### `foundry.toml` `solc = "X"` global pin multi-version compile'i bloklar
+
+**Problem:** Sprint 3'te `ava-labs/icm-contracts` library'si `pragma solidity 0.8.25` (caret yok, sıkı pin) kullanıyor. Bizim Sprint 1+2 template'leri ise `pragma 0.8.34` ile yazılmış. Foundry global ayarı `solc = "0.8.34"` ise ICTT contract'larını derlemek imkansız (`No solc version exists` veya `pragma mismatch`).
+
+**Çözüm:** `foundry.toml`'dan `solc = "X"` satırını **kaldır**, `auto_detect_solc = true` ekle. Foundry her dosyanın pragma'sına göre solc seçer; multi-version derleme aktif olur. KozaGasToken (0.8.34), KozaCollection (0.8.34) ve KozaTokenHome/Remote (0.8.25) yan yana derlenir.
+
+**Genel kural:** Tek bir Solidity sürümüyle deterministic build hedefi olan projelerde global `solc` pin mantıklı; ama denetlenmiş 3rd-party kütüphaneler (icm-contracts gibi) sıkı pin yaparsa multi-version compile zorunluluğu doğar. `auto_detect_solc` çözüm — sadece test'leri tekrar koş ve gas/bytecode farkı olmadığını doğrula.
+
+### Avalanche Warp Messenger precompile'ı Foundry test'lerinde mock'lanmalı
+
+**Problem:** ICTT contract'larını test etmek isteyince `__init` fonksiyonu Warp Messenger precompile'ını (`0x0200000000000000000000000000000000000005`) çağırıyor. Foundry test EVM'inde precompile yok → `call to non-contract address` hatası.
+
+**Çözüm:** `vm.etch` + `vm.mockCall` ikilisi:
+
+```solidity
+address constant WARP = 0x0200000000000000000000000000000000000005;
+
+function setUp() public {
+    // Step 1: precompile address'ine sahte bytecode koy (yoksa mockCall override
+    // çalışmaz — EVM önce contract var mı diye bakar).
+    vm.etch(WARP, hex"01");
+
+    // Step 2: getBlockchainID() çağrısını yakala, sahte değer döndür.
+    vm.mockCall(
+        WARP,
+        abi.encodeWithSignature("getBlockchainID()"),
+        abi.encode(bytes32(uint256(43113)))
+    );
+}
+```
+
+**Genel kural:** Avalanche L1 precompile'larını (Warp, ContractNativeMinter, AllowList, vs.) Foundry test'lerinde **etch + mockCall** ile mock'lamak reusable bir pattern. Sadece `vm.mockCall` yetmez — `vm.etch` ile non-zero bytecode set etmek zorunlu, aksi halde EVM call'u yapmadan boş döner.
+
+### TeleporterRegistry init'i için minimal mock yeter
+
+**Problem:** ICTT smoke test'lerinde gerçek `TeleporterRegistry` deploy etmek gereksiz overhead — `_addProtocolVersion` ve `WARP` precompile setup'ı zinciri uzatıyor.
+
+**Çözüm:** Minimal `MockTeleporterRegistry` kontratı yazıldı (3 fonksiyon: `latestVersion`, `getAddressFromVersion`, `getLatestTeleporter`, `getVersionFromAddress`). `__TeleporterRegistryApp_init`'in zero-check + version-compare adımlarını geçmek için yeterli yüzey.
+
+**Genel kural:** Wrapper kontratlar için **library logic'ini test etme**. Sadece kendi katmanını (constructor forwarding, access control eklemeleri) test et. Library zaten denetlenmiş.

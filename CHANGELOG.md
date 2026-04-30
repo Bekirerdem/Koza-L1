@@ -68,6 +68,58 @@ Snowtrace source verification pending — Routescan free-tier API key blocked by
 
 ## [Unreleased]
 
+### Added (Sprint 3 — Template 3 ICTT Cross-L1 Bridge)
+
+- **Template 3**: `src/templates/ictt-bridge/KozaTokenHome.sol` ve
+  `KozaTokenRemote.sol` — `ava-labs/icm-contracts` ERC20TokenHome /
+  ERC20TokenRemote audited inherit. Custom logic minimum (audit-grade
+  prensibi). Phase 1 default senaryosu: Fuji KGAS lock → kozaTestL1
+  wKGAS mint.
+- **Yerel test L1 (kozaTestL1)**: WSL/Ubuntu'da Avalanche CLI ile
+  spawn — Subnet-EVM PoA, chain ID 9999, TKOZA gas token, ICM açık,
+  Teleporter messenger `0x253b...5fcf` deterministic deploy edilmiş.
+  RPC: `http://127.0.0.1:9654/ext/bc/2s1JmPhG.../rpc` (Windows ↔ WSL
+  port forwarding ile Foundry test'lerine erişilebilir).
+- **Avalanche CLI install script'i**: `scripts/setup/install-avalanche-cli.sh`
+  — WSL/Ubuntu üzerine v1.9.6 indir + kur + PATH idempotent ekle.
+- **Tests 3C**: `test/templates/ICTTBridge.t.sol` — 6 smoke test:
+  KozaTokenHome + KozaTokenRemote constructor + zero-check revert'leri.
+  Warp Messenger precompile (`0x0200...0005`) `vm.etch` + `vm.mockCall`
+  ikilisiyle mock'landı; minimal `MockTeleporterRegistry` kontratı yazıldı.
+  Fork test'ler 3G live deploy'a ertelendi.
+- **Deploy script'leri 3D**:
+  - `script/deploy/DeployTokenHome.s.sol` — Fuji'ye `KozaTokenHome` yayar.
+    Default Teleporter Registry: `0xF86Cb19Ad8405AEFa7d09C778215D2Cb6eBfB228`
+    (Avalanche resmi); default token: KGAS v0.1.0.
+  - `script/deploy/DeployTokenRemote.s.sol` — kozaTestL1'e
+    `KozaTokenRemote` yayar. `REMOTE_TOKEN_HOME_BLOCKCHAIN_ID` ve
+    `REMOTE_TOKEN_HOME_ADDRESS` env'den okur.
+  - İkisi de Sprint 1/2 pattern'iyle: `run()` (env-driven) + `deploy(...)`
+    (parametric, test-friendly).
+- **Genesis 3E**: `genesis/ictt-bridge.json` — ICTT hedef L1 için
+  Subnet-EVM genesis preset; `warpConfig` zorunlu açık, contract
+  deployer + tx allowlist placeholder'ları, deploy ücreti notu.
+  `genesis/README.md` ICTT senaryosunu içerecek şekilde güncellendi.
+- **Türkçe rehber 3F**: `docs/tr/03-templateler/ictt-bridge.md` —
+  3 senaryo (Native↔ERC20, ERC20↔ERC20, ERC20↔Native), 3 katmanlı
+  mimari (ICM → Teleporter → ICTT), 8 audit-grade güvenlik uyarısı
+  (custom bridge yasağı, multisig manager, version pinning, replay,
+  multi-hop trust, decimals scaling, vs.), 8 adımlı step-by-step deploy
+  rehberi, ortak hatalar + çözümleri, Foundry test komutları, mainnet
+  öncesi production checklist.
+
+### Fixed (Sprint 3)
+
+- **Foundry config**: `foundry.toml` `solc = "0.8.34"` global pin'i
+  kaldırıldı, `auto_detect_solc = true` aktifleştirildi. icm-contracts
+  `pragma 0.8.25` sıkı pin'iyle çakışma çözüldü; multi-version compile
+  artık çalışıyor (KozaGasToken/KozaCollection 0.8.34, ICTT contract'lar
+  0.8.25 yan yana). 78/78 test pass.
+- **lessons.md**: Sprint 3'te öğrenilen 3 yeni pattern eklendi —
+  `auto_detect_solc` ile multi-version compile, Warp precompile için
+  `vm.etch + vm.mockCall` mock pattern, wrapper kontratlarda library
+  logic'ini değil sadece kendi katmanını test etme prensibi.
+
 ### Added
 - Project initialized (Phase 1 Sprint 0, 2026-04-29)
 - Foundry config (Solidity 0.8.34, optimizer 200, via_ir, fuzz 10000, invariant 1000)
