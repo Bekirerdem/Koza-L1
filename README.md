@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🏔️ koza-L1
+# 🏔️ KOZA-L1
 
 **Türk geliştiriciler için Avalanche L1 starter kit**
 
@@ -22,7 +22,7 @@ _Audit-grade Solidity şablonları · Subnet-EVM · ICTT cross-L1 köprü · Tü
 
 ## 🎯 Ne Bu
 
-**`koza-L1` = "create-react-app, ama Türk dev için Avalanche Solidity"**
+**`KOZA-L1` = "create-react-app, ama Türk dev için Avalanche Solidity"**
 
 Türk Solidity geliştiricilerinin Avalanche'da kendi blockchain'ini (Sovereign L1) ve smart contract'larını **production-grade şekilde** deploy etmesi için hazırlanmış açık kaynak audit-grade Solidity boilerplate kütüphanesi.
 
@@ -32,15 +32,15 @@ Türk Solidity geliştiricilerinin Avalanche'da kendi blockchain'ini (Sovereign 
 >
 > **Şu an:** Bir hafta İngilizce docs + 10 farklı tutorial + Stack Overflow arasında kayboluyor.
 >
-> **`koza-L1` ile:** `git clone` → `forge install` → audit-grade şablonu kendi projesine uyarla → Türkçe rehberi takip et → 1 saatte güvenli şekilde Fuji'ye deploy et.
+> **`KOZA-L1` ile:** `git clone` → `forge install` → audit-grade şablonu kendi projesine uyarla → Türkçe rehberi takip et → 1 saatte güvenli şekilde Fuji'ye deploy et.
 
 ### Niye Var?
 
-| Sorun | Mevcut Durum | `koza-L1` Çözümü |
-|---|---|---|
-| **Avalanche9000 ile L1 kurulumu %99 ucuzladı** | Ama production-grade Türkçe toolkit yok | Türkçe + audit-grade boilerplate |
-| **Hackathon → production geçişi zor** | Audit pattern'leri, ICTT lock/burn, ERC-7201 storage Türkçe yazılı kaynaklar yetersiz | Audited primitive'ler üzerine kurulu, denenmiş şablonlar |
-| **Türk Avalanche topluluğu büyüyor** | Team1 TR + Bursa Koza DAO + üniversite kulüpleri aktif, ortak kod altyapısı eksik | Topluluk içi ortak temel + Türkçe dokümantasyon |
+| Sorun                                          | Mevcut Durum                                                                          | `KOZA-L1` Çözümü                                         |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| **Avalanche9000 ile L1 kurulumu %99 ucuzladı** | Ama production-grade Türkçe toolkit yok                                               | Türkçe + audit-grade boilerplate                         |
+| **Hackathon → production geçişi zor**          | Audit pattern'leri, ICTT lock/burn, ERC-7201 storage Türkçe yazılı kaynaklar yetersiz | Audited primitive'ler üzerine kurulu, denenmiş şablonlar |
+| **Türk Avalanche topluluğu büyüyor**           | Team1 TR + Bursa Koza DAO + üniversite kulüpleri aktif, ortak kod altyapısı eksik     | Topluluk içi ortak temel + Türkçe dokümantasyon          |
 
 ### Kim İçin?
 
@@ -55,7 +55,7 @@ Türk Solidity geliştiricilerinin Avalanche'da kendi blockchain'ini (Sovereign 
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│                  koza-L1 — Avalanche Starter Kit                 │
+│                  KOZA-L1 — Avalanche Starter Kit                 │
 └──────────────────────────────────┬───────────────────────────────┘
                                    │
         ┌──────────────────────────┼──────────────────────────┐
@@ -91,15 +91,16 @@ Türk Solidity geliştiricilerinin Avalanche'da kendi blockchain'ini (Sovereign 
 
 ## 📦 Şablonlar
 
-| # | Şablon | Durum | Açıklama |
-|---|---|---|---|
-| 1 | **ERC-20 + Custom Gas Token** | ✅ v0.1.0 | Subnet-EVM için native gas token — `Ownable2Step`, `Capped`, `Permit` (EIP-2612). [Live on Fuji](https://testnet.snowtrace.io/address/0x06451DD4Fb8ebFC19870DacC9568f4364D2A2eB0) |
-| 2 | **ERC-721 NFT Collection** | ✅ v0.2.0 | Allowlist (Merkle), royalty (ERC-2981), 3-faz mint (Closed/Allowlist/Public). [Live on Fuji](https://testnet.snowtrace.io/address/0x59347BB4365A18BBd92396Fd138E6cEfcDDb79C9) |
-| 3 | **ICTT Cross-L1 Köprü** | ✅ v0.3.0 | `ava-labs/icm-contracts` audited inherit — Token Home ([Fuji](https://testnet.snowtrace.io/address/0x2b1377537690793939DC42530c15DA897AC9D2D9)) + Token Remote (yerel L1). End-to-end live demo v0.3.1'e ertelendi (icm-relayer setup) |
-| 4 | **Soulbound Credential** | ⏳ Planlanıyor | ERC-5114 jenerik eğitim/topluluk sertifikası — non-transferable NFT |
-| 5 | **Treasury Multisig + Timelock** | ⏳ Planlanıyor | Safe-uyumlu, `AccessManager`, role-based |
+| #   | Şablon                           | Durum          | Açıklama                                                                                                                                                                                                                               |
+| --- | -------------------------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | **ERC-20 + Custom Gas Token**    | ✅ v0.1.0      | Subnet-EVM için native gas token — `Ownable2Step`, `Capped`, `Permit` (EIP-2612). [Live on Fuji](https://testnet.snowtrace.io/address/0x06451DD4Fb8ebFC19870DacC9568f4364D2A2eB0)                                                      |
+| 2   | **ERC-721 NFT Collection**       | ✅ v0.2.0      | Allowlist (Merkle), royalty (ERC-2981), 3-faz mint (Closed/Allowlist/Public). [Live on Fuji](https://testnet.snowtrace.io/address/0x59347BB4365A18BBd92396Fd138E6cEfcDDb79C9)                                                          |
+| 3   | **ICTT Cross-L1 Köprü**          | ✅ v0.3.0      | `ava-labs/icm-contracts` audited inherit — Token Home ([Fuji](https://testnet.snowtrace.io/address/0x2b1377537690793939DC42530c15DA897AC9D2D9)) + Token Remote (yerel L1). End-to-end live demo v0.3.1'e ertelendi (icm-relayer setup) |
+| 4   | **Soulbound Credential**         | ⏳ Planlanıyor | ERC-5114 jenerik eğitim/topluluk sertifikası — non-transferable NFT                                                                                                                                                                    |
+| 5   | **Treasury Multisig + Timelock** | ⏳ Planlanıyor | Safe-uyumlu, `AccessManager`, role-based                                                                                                                                                                                               |
 
 Her şablon:
+
 - ✅ Solidity 0.8.34 (template 3 için 0.8.25 — icm-contracts uyumu, multi-version compile)
 - ✅ OpenZeppelin v5.3+ inherit + audited 3rd-party (icm-contracts) miras
 - ✅ Foundry test (unit + invariant + fuzz, ≥10000 runs; ICTT için smoke test'ler `vm.etch + vm.mockCall` Warp precompile mock'uyla)
@@ -121,8 +122,8 @@ Her şablon:
 ### Kurulum
 
 ```bash
-git clone https://github.com/Bekirerdem/koza-l1.git
-cd koza-l1
+git clone https://github.com/Bekirerdem/Koza-L1.git
+cd Koza-L1
 forge install              # forge-std + OpenZeppelin v5.3 + ava-labs/icm-contracts
 forge build
 forge test -vvv            # unit + invariant + fuzz testler
@@ -142,14 +143,14 @@ forge script script/deploy/DeployERC20Gas.s.sol \
 
 ## ❓ Niye Avalanche?
 
-| Avantaj | Anlamı |
-|---|---|
-| **Avalanche9000 / Etna upgrade** | L1 kurulumu Ethereum L2'lerden çok daha ucuz (%99 maliyet düşüşü) |
-| **ICM / ICTT** | Native cross-L1 mesajlaşma — bridge yok, ekstra trust assumption yok |
-| **Sub-second finality** | L2'lerin günlerce sürebilen withdrawal bekleme süresi yok |
-| **Custom Gas Token** | Kendi token'ınla gas öder, AVAX bağımlılığı yok |
-| **Audited primitive'ler** | `ava-labs/icm-contracts`'tan miras al, bridge yazma riski yok |
-| **Türk topluluk** | [Team1 TR](https://team1.blog) — Avalanche'a en aktif lokal topluluk |
+| Avantaj                          | Anlamı                                                               |
+| -------------------------------- | -------------------------------------------------------------------- |
+| **Avalanche9000 / Etna upgrade** | L1 kurulumu Ethereum L2'lerden çok daha ucuz (%99 maliyet düşüşü)    |
+| **ICM / ICTT**                   | Native cross-L1 mesajlaşma — bridge yok, ekstra trust assumption yok |
+| **Sub-second finality**          | L2'lerin günlerce sürebilen withdrawal bekleme süresi yok            |
+| **Custom Gas Token**             | Kendi token'ınla gas öder, AVAX bağımlılığı yok                      |
+| **Audited primitive'ler**        | `ava-labs/icm-contracts`'tan miras al, bridge yazma riski yok        |
+| **Türk topluluk**                | [Team1 TR](https://team1.blog) — Avalanche'a en aktif lokal topluluk |
 
 ---
 
@@ -172,6 +173,7 @@ forge script script/deploy/DeployERC20Gas.s.sol \
 ## 🛡️ Güvenlik
 
 Tüm şablonlar:
+
 - ✅ **Solidity 0.8.34** (IR storage bug fix sonrası)
 - ✅ **OpenZeppelin v5.3+** (`Ownable2Step`, `AccessManager`, ERC-7201 namespaced storage)
 - ✅ **Custom errors** (gas + audit kalitesi)
@@ -205,6 +207,7 @@ Bu proje aşağıdaki ekosistemler ve toplulukların omuzlarında yükseliyor:
 - **[OpenZeppelin](https://www.openzeppelin.com/)** — sektör standartı güvenlik kütüphanesi
 - **[Cyfrin Updraft](https://updraft.cyfrin.io/)** — Avalanche L1 development eğitim materyalleri
 - **[Team1 Türkiye](https://team1.blog/)** — Türkiye'nin Avalanche topluluğu
+- **Koza DAO** — `KOZA-L1`'in çıkış noktası olan Bursa merkezli yerli Web3 topluluğu
 
 ---
 
