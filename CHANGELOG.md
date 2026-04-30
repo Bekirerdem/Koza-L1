@@ -5,6 +5,56 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] — 2026-04-30
+
+Third template release: ICTT Cross-L1 Bridge (`KozaTokenHome` /
+`KozaTokenRemote`) is feature-complete, fully tested, documented in
+Türkçe, and **live on Fuji + kozaTestL1 yerel test L1**. Phase 1'in
+en kritik template'i — `ava-labs/icm-contracts` audited inherit + Türkçe
+audit-grade rehber.
+
+### Live Deployment
+
+**Home (Fuji testnet, chain ID 43113):**
+- **Contract:** `KozaTokenHome` at [`0x2b1377537690793939DC42530c15DA897AC9D2D9`](https://testnet.snowtrace.io/address/0x2b1377537690793939DC42530c15DA897AC9D2D9)
+- **Tx:** `0x4d13579732fef4f06970044a7640e6cfa832368e6b54aed33c8d9d5427061ff0`
+- **Bridge token:** `KozaGasToken` (KGAS) v0.1.0 — `0x06451DD4Fb8ebFC19870DacC9568f4364D2A2eB0`
+- **Teleporter Registry:** `0xF86Cb19Ad8405AEFa7d09C778215D2Cb6eBfB228` (Avalanche resmi Fuji)
+- **Teleporter Manager:** deployer EOA (mainnet öncesi multisig'e migrate)
+
+**Remote (kozaTestL1, chain ID 9999, yerel Subnet-EVM):**
+- **Contract:** `KozaTokenRemote` at `0x53c10844dD2A249eE488EeA66E7Df21365030ceB`
+- **Tx:** `0x5d7f16478e9e248a35af8e3ab84807371476850ad0c4545263c5733d7e0ab97a`
+- **Token meta:** `Wrapped Koza Gas` / `wKGAS` / 18 decimals
+- **Teleporter Registry:** `0x965c383362FF8395f91677f17E9f9bD8E1f58724`
+- **Token Home Blockchain ID (Fuji C-Chain):** `0x7fc93d85c6d62c5b2ac0b519c87010ea5294012d1e407030d6acd0021cac10d5`
+
+### Verification Status
+
+- `KozaTokenHome` source verified on Snowtrace via Routescan ([snowscan
+  mirror](https://testnet.snowscan.xyz/address/0x2b1377537690793939dc42530c15da897ac9d2d9)).
+- `KozaTokenRemote` yerel L1'de — Routescan/Snowtrace yok; bytecode + ABI
+  on-chain doğrulandı (read fonksiyonları: `name=Wrapped Koza Gas`,
+  `symbol=wKGAS`, `decimals=18`, `totalSupply=0`).
+- `registerWithHome()` Remote tarafında çağrıldı; mesaj Teleporter
+  messenger üzerinden Warp signed olarak yayımlandı (tx
+  `0x920b39...3cf4e`). **Fuji tarafına teslim için manuel `icm-relayer`
+  setup beklemede** — Avalanche CLI yerel relayer sadece yerel L1'leri
+  izler, cross-Fuji köprü için ayrı relayer config'i gerek (Sprint 7
+  Launch'a veya ek bir milestone'a ertelendi).
+
+### Limitations & Follow-ups
+
+- **End-to-end live bridge demo (Fuji → kozaTestL1 KGAS transfer)
+  beklemede.** Kontratlar canlı, smoke test'ler 6/6 yeşil, deploy
+  + register mesajları broadcast'lendi; ama gerçek mesaj relay'i
+  manuel `icm-relayer` setup gerektiriyor. Bu ek iş Sprint 7 (Launch)
+  veya bağımsız bir 3.1 milestone'a ertelendi — Phase 1 audit-grade
+  boilerplate hedefi etkilenmez.
+- Fork test'ler (Fuji + kozaTestL1 üzerinden gerçek mesaj relay testi)
+  aynı sebepten ertelenmiştir; smoke test'ler `vm.etch + vm.mockCall`
+  pattern'iyle Warp precompile'ı simüle ediyor.
+
 ## [0.2.0] — 2026-04-30
 
 Second template release: ERC-721 NFT Collection (`KozaCollection`) is
@@ -67,6 +117,11 @@ Snowtrace source verification pending — Routescan free-tier API key blocked by
 > **Update (v0.1.1):** Verify resolved by switching `foundry.toml` etherscan endpoint to Routescan; source code now public on Snowtrace/Snowscan.
 
 ## [Unreleased]
+
+### Notes
+
+Sprint 3 ICTT bridge yayını v0.3.0 olarak tag'lendi. Aşağıdaki maddeler
+detaylı geçmiş içindir; özet için `[0.3.0]` bölümüne bakın.
 
 ### Added (Sprint 3 — Template 3 ICTT Cross-L1 Bridge)
 
@@ -216,14 +271,16 @@ type-error cleanup.
 - v0.1.0 — ERC-20 + Custom Gas Token template ✅
 - v0.1.1 — Snowtrace verify retry (Sprint 1G follow-up) ✅
 - v0.2.0 — ERC-721 Collection (allowlist + royalty) ✅
-- v0.3.0 — ICTT Cross-L1 Bridge
+- v0.3.0 — ICTT Cross-L1 Bridge ✅
+- v0.3.1 — End-to-end Fuji ↔ kozaTestL1 live bridge demo (icm-relayer setup)
 - v0.4.0 — Soulbound Credential (ERC-5114)
 - v0.5.0 — Treasury Multisig + Timelock
 - v0.6.0 — EN docs + landing site polish
 
 ---
 
-[Unreleased]: https://github.com/Bekirerdem/Koza-L1/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/Bekirerdem/Koza-L1/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/Bekirerdem/Koza-L1/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/Bekirerdem/Koza-L1/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/Bekirerdem/Koza-L1/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/Bekirerdem/Koza-L1/releases/tag/v0.1.0
