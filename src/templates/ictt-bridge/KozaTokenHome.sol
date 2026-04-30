@@ -5,7 +5,7 @@ import {ERC20TokenHome} from "@ictt/TokenHome/ERC20TokenHome.sol";
 
 /**
  * @title KozaTokenHome
- * @notice koza-l1 Sprint 3 ICTT TokenHome boilerplate (Phase 1, v0.3.0).
+ * @notice kozalak-l1 Sprint 3 ICTT TokenHome boilerplate (Phase 1, v0.3.0).
  *
  *         Source-chain ERC-20 lock contract. ava-labs/icm-contracts'tan
  *         denetlenmiş `ERC20TokenHome`'u doğrudan miras alır; üzerine

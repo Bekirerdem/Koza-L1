@@ -1,9 +1,9 @@
-# Deployment Rehberi — `koza.bekirerdem.dev`
+# Deployment Rehberi — `kozalak.bekirerdem.dev`
 
-Bu rehber `koza-l1` landing site'ının Cloudflare Pages üzerinde nasıl
+Bu rehber `kozalak-l1` landing site'ının Cloudflare Pages üzerinde nasıl
 yayına alınacağını adım adım açıklar.
 
-> **Stack:** Astro 5 (static build) → Cloudflare Pages → CNAME `koza.bekirerdem.dev`
+> **Stack:** Astro 5 (static build) → Cloudflare Pages → CNAME `kozalak.bekirerdem.dev`
 > **Deploy yöntemi:** GitHub Actions (`.github/workflows/frontend-deploy.yml`)
 > **Tetikleyici:** `frontend/**` altında değişiklik içeren `main` push'ları + manuel `workflow_dispatch`
 
@@ -15,7 +15,7 @@ yayına alınacağını adım adım açıklar.
 
 1. [dash.cloudflare.com](https://dash.cloudflare.com) → **Workers & Pages** → **Create**
 2. **Pages** sekmesi → **Upload assets** (Git bağlama yapma — GitHub Actions kullanacağız)
-3. Project name: **`koza-l1`** (workflow `--project-name=koza-l1` ile push eder, isim eşleşmeli)
+3. Project name: **`kozalak-l1`** (workflow `--project-name=kozalak-l1` ile push eder, isim eşleşmeli)
 4. İlk upload için boş bir `index.html` yükle veya komut satırından oluştur:
 
 ```bash
@@ -23,17 +23,17 @@ yayına alınacağını adım adım açıklar.
 cd frontend
 npm ci
 npm run build
-npx wrangler pages project create koza-l1 --production-branch=main
-npx wrangler pages deploy dist --project-name=koza-l1 --branch=main
+npx wrangler pages project create kozalak-l1 --production-branch=main
+npx wrangler pages deploy dist --project-name=kozalak-l1 --branch=main
 ```
 
-> Bu adımda Cloudflare CLI `koza-l1.pages.dev` adresine ilk versiyonu push eder.
+> Bu adımda Cloudflare CLI `kozalak-l1.pages.dev` adresine ilk versiyonu push eder.
 
 ---
 
 ## 2. GitHub Secrets Ayarla
 
-`Bekirerdem/koza-l1` reposunda → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**:
+`Bekirerdem/Kozalak-L1` reposunda → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**:
 
 | Secret İsmi | Nereden Alınır |
 |---|---|
@@ -46,12 +46,12 @@ npx wrangler pages deploy dist --project-name=koza-l1 --branch=main
 
 ## 3. Custom Domain Bağla
 
-`koza.bekirerdem.dev` alt-domainini Pages'e yönlendir:
+`kozalak.bekirerdem.dev` alt-domainini Pages'e yönlendir:
 
 ### 3a. Cloudflare Pages tarafı
 
 1. Pages projesi → **Custom domains** → **Set up a custom domain**
-2. Domain: **`koza.bekirerdem.dev`** → **Continue**
+2. Domain: **`kozalak.bekirerdem.dev`** → **Continue**
 3. Cloudflare otomatik DNS önerisi sunar:
    - `bekirerdem.dev` zaten Cloudflare'da yönetiliyorsa → **Activate domain** tek tıklama
    - Başka registrar/DNS provider ise → aşağıdaki manuel adıma geç
@@ -63,7 +63,7 @@ DNS provider'ında bir CNAME kaydı ekle:
 ```
 Type:  CNAME
 Name:  koza
-Value: koza-l1.pages.dev
+Value: kozalak-l1.pages.dev
 TTL:   Auto (veya 300)
 Proxy: -
 ```
@@ -92,7 +92,7 @@ Adımlar:
 3. `npm ci` → bağımlılıkları kilit dosyasından kur
 4. `npx astro check` → tip + accessibility kontrolü (hata varsa deploy iptal)
 5. `npm run build` → `frontend/dist/` static output
-6. `cloudflare/wrangler-action@v3` → `wrangler pages deploy dist --project-name=koza-l1 --branch=main`
+6. `cloudflare/wrangler-action@v3` → `wrangler pages deploy dist --project-name=kozalak-l1 --branch=main`
 
 > Build başarısız olursa deploy çalışmaz. Astro check 0 error tutmalı.
 
@@ -124,7 +124,7 @@ Beklenen çıktı: **0 errors, 0 warnings, 0 hints**.
 
 Cloudflare Pages her deploy'u otomatik versiyonlar.
 
-1. dash.cloudflare.com → Pages → `koza-l1` → **Deployments** sekmesi
+1. dash.cloudflare.com → Pages → `kozalak-l1` → **Deployments** sekmesi
 2. Eski bir deploy seç → **...** → **Rollback to this deployment**
 
 İstenirse production branch'i değiştirip eski commit'e dönülebilir.
@@ -136,8 +136,8 @@ Cloudflare Pages her deploy'u otomatik versiyonlar.
 | Belirti | Çözüm |
 |---|---|
 | `Error: Authentication error [code: 10000]` | `CLOUDFLARE_API_TOKEN` yetkisi `Pages: Edit` içermiyor — token'ı yeniden oluştur |
-| `Project not found` | `--project-name=koza-l1` ile dashboard'daki proje adı eşleşmiyor — adı düzelt |
-| `koza.bekirerdem.dev` SSL pending | DNS yayılması bekleniyor (15-30 dk). `dig koza.bekirerdem.dev CNAME` ile doğrula |
+| `Project not found` | `--project-name=kozalak-l1` ile dashboard'daki proje adı eşleşmiyor — adı düzelt |
+| `kozalak.bekirerdem.dev` SSL pending | DNS yayılması bekleniyor (15-30 dk). `dig kozalak.bekirerdem.dev CNAME` ile doğrula |
 | `astro check` CI'da hata | Yerelde `npx astro check` çalıştır, çıktıyı düzelt |
 | Deploy başarılı ama site eski içerik | Cloudflare cache → Pages projesi → **Caching** → **Purge cache** |
 
@@ -147,5 +147,5 @@ Cloudflare Pages her deploy'u otomatik versiyonlar.
 
 - **Önizleme deploy'ları:** Pull Request açıldığında preview URL üretmek istenirse `--branch=${{ github.head_ref }}` ile branch deploy aktive edilebilir
 - **Custom build env:** Astro `import.meta.env.PUBLIC_*` değişkenleri için workflow'a `env:` bloğu eklenmeli
-- **Çoklu domain:** `www.koza.bekirerdem.dev` veya `koza-l1.com` gibi ek domain'ler Pages dashboard'undan eklenebilir
+- **Çoklu domain:** `www.kozalak.bekirerdem.dev` veya `kozalak-l1.com` gibi ek domain'ler Pages dashboard'undan eklenebilir
 - **Edge functions:** Astro adapter `@astrojs/cloudflare`'e geçilirse SSR de mümkün — şu an ihtiyaç yok, full static yeterli

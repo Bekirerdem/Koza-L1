@@ -1,9 +1,9 @@
 {
-  "name": "koza-l1-frontend",
+  "name": "kozalak-l1-frontend",
   "type": "module",
   "version": "0.1.0",
   "private": true,
-  "description": "koza-L1 landing site — Astro + Tailwind v4 + GSAP + Lenis (avax-aligned design)",
+  "description": "kozalak-L1 landing site — Astro + Tailwind v4 + GSAP + Lenis (avax-aligned design)",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

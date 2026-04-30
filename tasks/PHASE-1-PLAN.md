@@ -1,4 +1,4 @@
-# Phase 1 Implementation Plan — `koza-l1`
+# Phase 1 Implementation Plan — `kozalak-l1`
 
 > **Durum:** Aktif (2026-04-29 başlangıç)
 > **Hedef:** 5 audit-grade Avalanche/Solidity template + Türkçe deployment rehberi
@@ -7,7 +7,7 @@
 
 ## Stratejik Bağlam
 
-`koza-l1`, Bekir'in seçtiği **Senaryo P** (Avalanche L1 Toolkit) projesi. Solo dev + güvenlik kritik + hibe-odaklı (Retro9000 + Codebase) + açık kaynak.
+`kozalak-l1`, Bekir'in seçtiği **Senaryo P** (Avalanche L1 Toolkit) projesi. Solo dev + güvenlik kritik + hibe-odaklı (Retro9000 + Codebase) + açık kaynak.
 
 Bekir'in mevcut Avalanche tecrübesi:
 - ChainBounty (hackathon): Foundry + ICM/Teleporter + Subnet-EVM L1 + Wagmi/Viem
@@ -36,7 +36,7 @@ Phase 1 hedefi: Hackathon-grade'den **production audit-grade**'e geçiş.
 
 ### Yapıldı (2026-04-29)
 
-- [x] Klasör iskeleti: `koza-l1/{src,test,script,docs/{tr,en},genesis,tasks,.github/workflows}`
+- [x] Klasör iskeleti: `kozalak-l1/{src,test,script,docs/{tr,en},genesis,tasks,.github/workflows}`
 - [x] `foundry.toml` — Solidity 0.8.34, optimizer 200, via_ir, fuzz 10000, invariant 1000
 - [x] `remappings.txt` — OZ + ICM contracts + ICTT/Teleporter/Subnet-EVM/Utilities prefixes
 - [x] `.gitignore` — Foundry + Node + secrets + IDE
@@ -54,7 +54,7 @@ Phase 1 hedefi: Hackathon-grade'den **production audit-grade**'e geçiş.
 - [ ] İlk `forge build` (boş src/, sadece dependencies derleniyor mu?)
 - [ ] `SECURITY.md`, `CONTRIBUTING.md`, `CHANGELOG.md` (seed)
 - [ ] `.github/workflows/ci.yml` — forge build/test/fmt + slither + aderyn
-- [ ] GitHub repo oluştur (`gh repo create Bekirerdem/koza-l1 --public --source=. --description "..."`)
+- [ ] GitHub repo oluştur (`gh repo create Bekirerdem/Kozalak-L1 --public --source=. --description "..."`)
   - **Önkoşul:** `gh auth login -h github.com` (Bekir terminal'den interactive)
 - [ ] İlk push to main
 - [ ] Branch protection: main protected, PR-only, CI required

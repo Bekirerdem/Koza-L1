@@ -1,4 +1,4 @@
-# Lessons Learned — koza-L1
+# Lessons Learned — kozalak-L1
 
 Sprint sırasında karşılaşılan ve gelecekte tekrar etmemek istediğimiz pattern'ler ve düzeltmeler.
 

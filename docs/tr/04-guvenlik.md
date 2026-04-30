@@ -1,6 +1,6 @@
 # Güvenlik Checklist — Audit-Grade Solidity 2026
 
-> **Hedef:** `koza-L1` template'lerinin **production deploy öncesi** güvenlik standartlarını kanıtlamak.
+> **Hedef:** `kozalak-L1` template'lerinin **production deploy öncesi** güvenlik standartlarını kanıtlamak.
 
 > ⚠️ **Bu doküman bir audit yerine geçmez.** Production deployment öncesi profesyonel audit (Sherlock, Cantina, Trail of Bits) yapılmalıdır.
 
@@ -14,7 +14,7 @@ Bir smart contract şu üç saldırıyı bekler:
 2. **Privilege escalation** — access control bug, role hijack, ownership transfer hile
 3. **Supply chain saldırı** — kötü niyetli dependency, kompromise edilmiş RPC, multisig UI hack
 
-`koza-L1` template'leri 1 ve 2'ye karşı sertleştirilmiştir. 3 (supply chain) **operatörün sorumluluğu** — multisig signer'lar, RPC provider'lar, frontend host'ları sıkı denetlenmeli.
+`kozalak-L1` template'leri 1 ve 2'ye karşı sertleştirilmiştir. 3 (supply chain) **operatörün sorumluluğu** — multisig signer'lar, RPC provider'lar, frontend host'ları sıkı denetlenmeli.
 
 ---
 
@@ -59,7 +59,7 @@ pragma solidity 0.8.34;
 pragma solidity ^0.8.0;
 ```
 
-`koza-L1` ekosisteminde tüm contract'lar ve test'ler aynı kesin pragma'ya sahip olmalı. `foundry.toml`'da `solc = "0.8.34"` ile uyumlu.
+`kozalak-L1` ekosisteminde tüm contract'lar ve test'ler aynı kesin pragma'ya sahip olmalı. `foundry.toml`'da `solc = "0.8.34"` ile uyumlu.
 
 ### 2.2 Custom Errors > require strings
 
@@ -214,7 +214,7 @@ bytes32 DOMAIN_SEPARATOR = keccak256(
 );
 ```
 
-`koza-L1` `KozaGasToken`'ın `ERC20Permit` (EIP-2612) implementasyonu bu pattern'e uyar — `nonces[owner]` her permit'te artar.
+`kozalak-L1` `KozaGasToken`'ın `ERC20Permit` (EIP-2612) implementasyonu bu pattern'e uyar — `nonces[owner]` her permit'te artar.
 
 ### 3.7 Access Control Bug (En Yaygın 2025 Kayıp Kategorisi)
 
@@ -259,7 +259,7 @@ contract MyBridge {
     function relay(bytes calldata msg) external { ... }
 }
 
-// ✅ koza-L1 yaklaşımı: ava-labs/icm-contracts inherit
+// ✅ kozalak-L1 yaklaşımı: ava-labs/icm-contracts inherit
 import {TokenHome} from "icm-contracts/teleporter/registry/TokenHome.sol";
 contract MyTokenHome is TokenHome { ... }
 ```
@@ -310,7 +310,7 @@ function invariant_TotalSupplyConstant() public view {
 - CI: 50,000 runs (`FOUNDRY_PROFILE=ci`)
 - Production öncesi: 1,000,000+ runs (uzun)
 
-`koza-L1` foundry.toml'da default 10K, CI profile'da 50K.
+`kozalak-L1` foundry.toml'da default 10K, CI profile'da 50K.
 
 ---
 
@@ -324,7 +324,7 @@ function invariant_TotalSupplyConstant() public view {
 | **Echidna** | Property-based fuzzing, derin invariant | nightly CI |
 | **Mythril** | Bytecode-level symbolic | overnight CI |
 
-`koza-L1` CI pipeline'ı:
+`kozalak-L1` CI pipeline'ı:
 1. `forge build`
 2. `forge fmt --check`
 3. `forge test --fuzz-runs 10000`
@@ -354,7 +354,7 @@ Trail of Bits, OpenZeppelin, ConsenSys Diligence, Cyfrin. Solo dev MVP için **a
 **Avantaj:** Çok daha ucuz, çok daha fazla göz görür.
 **Dezavantaj:** Garantisiz — bug bulunmasa da ödüyorsunuz.
 
-`koza-L1` Phase 1 sonu: **Sherlock $30K-$50K contest** hedefi.
+`kozalak-L1` Phase 1 sonu: **Sherlock $30K-$50K contest** hedefi.
 
 ### 6.3 Tier 3 — Bug Bounty (Sürekli)
 
@@ -384,7 +384,7 @@ Mainnet deploy günü Immunefi programı **canlı olmalı**.
 
 **Genel patern:** 2025 toplam kayıp $1.42B+. **Yeni vektör değil — eski hataların tekrarı.**
 
-`koza-L1` ekosistemi olarak: **OZ + ava-labs audited primitive'ler dışında custom logic minimum**. Bu kural ihlal edildiğinde audit-grade etiketi düşer.
+`kozalak-L1` ekosistemi olarak: **OZ + ava-labs audited primitive'ler dışında custom logic minimum**. Bu kural ihlal edildiğinde audit-grade etiketi düşer.
 
 ---
 
@@ -397,7 +397,7 @@ Anthropic'in 2025 araştırmasında: AI agent'lar smart contract'larda **toplam 
 2. Fuzz/invariant test (10K+ runs)
 3. Audit competition öncesi peer review
 
-`koza-L1` template'leri Claude AI ile yazıldı. Bu yüzden:
+`kozalak-L1` template'leri Claude AI ile yazıldı. Bu yüzden:
 - Tüm pattern'ler OpenZeppelin/ava-labs audited primitives'e dayanır
 - %100 test coverage zorunlu
 - Sherlock contest Phase 1 sonu hedeflenmiştir
@@ -435,9 +435,9 @@ Anthropic'in 2025 araştırmasında: AI agent'lar smart contract'larda **toplam 
 
 Yukarıdaki checklist'i kendi projenizde uygulayın. Sorularınız için:
 
-- GitHub Issues: https://github.com/Bekirerdem/koza-l1/issues
-- Discussions: https://github.com/Bekirerdem/koza-l1/discussions
-- Security disclosure: l3ekirerdem@gmail.com (`[koza-l1 SECURITY]`)
+- GitHub Issues: https://github.com/Bekirerdem/Kozalak-L1/issues
+- Discussions: https://github.com/Bekirerdem/Kozalak-L1/discussions
+- Security disclosure: l3ekirerdem@gmail.com (`[kozalak-l1 SECURITY]`)
 
 ---
 

@@ -1,14 +1,14 @@
 <div align="center">
 
-<img src="./.github/assets/koza-logo.svg" alt="KOZA-L1 logo" width="56" />
+<img src="./.github/assets/kozalak-logo.png" alt="KOZALAK-L1 logo" width="96" />
 
-# KOZA-L1
+# KOZALAK-L1
 
 **Türk geliştiriciler için Avalanche L1 starter kit**
 
 _Audit-grade Solidity şablonları · Subnet-EVM · ICTT cross-L1 köprü · Türkçe rehber_
 
-[![CI](https://github.com/Bekirerdem/koza-l1/actions/workflows/ci.yml/badge.svg)](https://github.com/Bekirerdem/koza-l1/actions/workflows/ci.yml)
+[![CI](https://github.com/Bekirerdem/Kozalak-L1/actions/workflows/ci.yml/badge.svg)](https://github.com/Bekirerdem/Kozalak-L1/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Solidity](https://img.shields.io/badge/Solidity-0.8.34-blue.svg)](https://soliditylang.org)
 [![Foundry](https://img.shields.io/badge/Foundry-1.5%2B-orange.svg)](https://book.getfoundry.sh)
@@ -24,7 +24,7 @@ _Audit-grade Solidity şablonları · Subnet-EVM · ICTT cross-L1 köprü · Tü
 
 ## 🎯 Ne Bu
 
-**`KOZA-L1` = "create-react-app, ama Türk dev için Avalanche Solidity"**
+**`KOZALAK-L1` = "create-react-app, ama Türk dev için Avalanche Solidity"**
 
 Türk Solidity geliştiricilerinin Avalanche'da kendi blockchain'ini (Sovereign L1) ve smart contract'larını **production-grade şekilde** deploy etmesi için hazırlanmış açık kaynak audit-grade Solidity boilerplate kütüphanesi.
 
@@ -34,11 +34,11 @@ Türk Solidity geliştiricilerinin Avalanche'da kendi blockchain'ini (Sovereign 
 >
 > **Şu an:** Bir hafta İngilizce docs + 10 farklı tutorial + Stack Overflow arasında kayboluyor.
 >
-> **`KOZA-L1` ile:** `git clone` → `forge install` → audit-grade şablonu kendi projesine uyarla → Türkçe rehberi takip et → 1 saatte güvenli şekilde Fuji'ye deploy et.
+> **`KOZALAK-L1` ile:** `git clone` → `forge install` → audit-grade şablonu kendi projesine uyarla → Türkçe rehberi takip et → 1 saatte güvenli şekilde Fuji'ye deploy et.
 
 ### Niye Var?
 
-| Sorun                                          | Mevcut Durum                                                                          | `KOZA-L1` Çözümü                                         |
+| Sorun                                          | Mevcut Durum                                                                          | `KOZALAK-L1` Çözümü                                         |
 | ---------------------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------- |
 | **Avalanche9000 ile L1 kurulumu %99 ucuzladı** | Ama production-grade Türkçe toolkit yok                                               | Türkçe + audit-grade boilerplate                         |
 | **Hackathon → production geçişi zor**          | Audit pattern'leri, ICTT lock/burn, ERC-7201 storage Türkçe yazılı kaynaklar yetersiz | Audited primitive'ler üzerine kurulu, denenmiş şablonlar |
@@ -57,7 +57,7 @@ Türk Solidity geliştiricilerinin Avalanche'da kendi blockchain'ini (Sovereign 
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│                  KOZA-L1 — Avalanche Starter Kit                 │
+│                  KOZALAK-L1 — Avalanche Starter Kit                 │
 └──────────────────────────────────┬───────────────────────────────┘
                                    │
         ┌──────────────────────────┼──────────────────────────┐
@@ -124,8 +124,8 @@ Her şablon:
 ### Kurulum
 
 ```bash
-git clone https://github.com/Bekirerdem/Koza-L1.git
-cd Koza-L1
+git clone https://github.com/Bekirerdem/Kozalak-L1.git
+cd Kozalak-L1
 forge install              # forge-std + OpenZeppelin v5.3 + ava-labs/icm-contracts
 forge build
 forge test -vvv            # unit + invariant + fuzz testler
@@ -209,7 +209,7 @@ Bu proje aşağıdaki ekosistemler ve toplulukların omuzlarında yükseliyor:
 - **[OpenZeppelin](https://www.openzeppelin.com/)** — sektör standartı güvenlik kütüphanesi
 - **[Cyfrin Updraft](https://updraft.cyfrin.io/)** — Avalanche L1 development eğitim materyalleri
 - **[Team1 Türkiye](https://team1.blog/)** — Türkiye'nin Avalanche topluluğu
-- **Koza DAO** — `KOZA-L1`'in çıkış noktası olan Bursa merkezli yerli Web3 topluluğu
+- **Koza DAO** — `KOZALAK-L1`'in çıkış noktası olan Bursa merkezli yerli Web3 topluluğu
 
 ---
 

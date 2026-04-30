@@ -1,5 +1,5 @@
 {
-  "_comment": "koza-L1 Template 3 — ICTT Cross-L1 Bridge için örnek Avalanche9000 Subnet-EVM genesis. Bu L1, ICTT (Inter-Chain Token Transfer) ile başka bir L1'den (örn. Fuji/C-Chain) gelen tokeni karşılayan **hedef** L1 senaryosudur. Kritik: ICM (Warp) MUTLAKA açık olmalı, aksi halde Teleporter messenger çalışmaz ve bridge tamamen disable olur. Teleporter messenger contract'ı (deterministic adres 0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf) genesis'te pre-deploy edilmez — Avalanche CLI ile L1 deploy edildikten sonra otomatik yayılır (avalanche blockchain deploy ... komutu zaten yapar). Manual L1'lerde post-deploy adımı zorunludur.",
+  "_comment": "kozalak-L1 Template 3 — ICTT Cross-L1 Bridge için örnek Avalanche9000 Subnet-EVM genesis. Bu L1, ICTT (Inter-Chain Token Transfer) ile başka bir L1'den (örn. Fuji/C-Chain) gelen tokeni karşılayan **hedef** L1 senaryosudur. Kritik: ICM (Warp) MUTLAKA açık olmalı, aksi halde Teleporter messenger çalışmaz ve bridge tamamen disable olur. Teleporter messenger contract'ı (deterministic adres 0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf) genesis'te pre-deploy edilmez — Avalanche CLI ile L1 deploy edildikten sonra otomatik yayılır (avalanche blockchain deploy ... komutu zaten yapar). Manual L1'lerde post-deploy adımı zorunludur.",
   "config": {
     "chainID": 99997,
     "homesteadBlock": 0,

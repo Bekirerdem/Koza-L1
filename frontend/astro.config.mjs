@@ -3,7 +3,7 @@ import {defineConfig} from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-    site: "https://koza.bekirerdem.dev",
+    site: "https://kozalak.bekirerdem.dev",
     vite: {
         // Astro 5 ships its own pinned Vite, while @tailwindcss/vite resolves
         // the user-installed Vite. Both expose Vite Plugin types from

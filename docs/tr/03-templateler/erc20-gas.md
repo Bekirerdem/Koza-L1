@@ -86,15 +86,15 @@ Bu template **pausable değil** — kasıtlı tasarım kararı. Adoption'ı kola
 ### Önkoşullar
 
 - Foundry kurulu (`forge --version` 1.5+)
-- `koza-L1` repo'su clone edilmiş
+- `kozalak-L1` repo'su clone edilmiş
 - Fuji testnet AVAX (deploy için ~0.05 AVAX yeterli)
 - Cüzdan: Core Wallet veya MetaMask (Fuji'ye eklenmiş)
 
 ### 1. Repo'yu hazırla
 
 ```bash
-git clone https://github.com/Bekirerdem/koza-l1.git
-cd koza-l1
+git clone https://github.com/Bekirerdem/Kozalak-L1.git
+cd kozalak-l1
 forge install
 forge build
 forge test  # 32/32 yeşil olmalı
@@ -308,6 +308,6 @@ ICTT entegrasyonu **Sprint 3 — Template 3** kapsamında.
 
 ## 🤝 Sorun mu var?
 
-- GitHub Issues: https://github.com/Bekirerdem/koza-l1/issues
-- Discussions: https://github.com/Bekirerdem/koza-l1/discussions
-- Security: l3ekirerdem@gmail.com (`[koza-l1 SECURITY]` subject)
+- GitHub Issues: https://github.com/Bekirerdem/Kozalak-L1/issues
+- Discussions: https://github.com/Bekirerdem/Kozalak-L1/discussions
+- Security: l3ekirerdem@gmail.com (`[kozalak-l1 SECURITY]` subject)

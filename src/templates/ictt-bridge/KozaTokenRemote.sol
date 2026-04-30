@@ -6,7 +6,7 @@ import {TokenRemoteSettings} from "@ictt/TokenRemote/interfaces/ITokenRemote.sol
 
 /**
  * @title KozaTokenRemote
- * @notice koza-l1 Sprint 3 ICTT TokenRemote boilerplate (Phase 1, v0.3.0).
+ * @notice kozalak-l1 Sprint 3 ICTT TokenRemote boilerplate (Phase 1, v0.3.0).
  *
  *         Hedef-zincir mint/burn ERC-20 representation. ava-labs/icm-contracts'tan
  *         denetlenmiş `ERC20TokenRemote`'u doğrudan miras alır; üzerine custom

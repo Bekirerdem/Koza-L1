@@ -1,6 +1,6 @@
-# Katkıda Bulun — koza-l1
+# Katkıda Bulun — kozalak-l1
 
-`koza-l1`'e katkıda bulunmak istediğin için teşekkürler! 🏔️
+`kozalak-l1`'e katkıda bulunmak istediğin için teşekkürler! 🏔️
 
 Bu proje, Türk Solidity geliştiricilerinin Avalanche ekosistemine production-grade kod ile katkı yapması için açık kaynak bir tooling. Hem Türkçe hem İngilizce katkı kabul edilir.
 
@@ -35,8 +35,8 @@ Bu proje, Türk Solidity geliştiricilerinin Avalanche ekosistemine production-g
 ### 1. Fork + Clone
 
 ```bash
-gh repo fork Bekirerdem/koza-l1 --clone
-cd koza-l1
+gh repo fork Bekirerdem/Kozalak-L1 --clone
+cd kozalak-l1
 forge install
 forge build
 forge test -vvv
@@ -170,4 +170,4 @@ Bir PR aşağıdakileri içermelidir:
 
 Her katkı (kod, doc, issue, PR review) önemli. İlk commit'inden itibaren burada anılırsın.
 
-— Bekir Erdem & koza-l1 katkıcıları
+— Bekir Erdem & kozalak-l1 katkıcıları

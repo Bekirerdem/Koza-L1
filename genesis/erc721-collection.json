@@ -1,5 +1,5 @@
 {
-  "_comment": "koza-L1 Template 2 — ERC-721 Collection için örnek Avalanche9000 Subnet-EVM genesis. Bu L1, NFT odaklı bir uygulama zinciridir: kullanıcılar mint, transfer, marketplace etkileşimi yapar. Native gas token uygulama tarafından customize edilebilir, ICM (Warp) açık, contract deployer allowlist mainnet için zorunlu kılınmıştır.",
+  "_comment": "kozalak-L1 Template 2 — ERC-721 Collection için örnek Avalanche9000 Subnet-EVM genesis. Bu L1, NFT odaklı bir uygulama zinciridir: kullanıcılar mint, transfer, marketplace etkileşimi yapar. Native gas token uygulama tarafından customize edilebilir, ICM (Warp) açık, contract deployer allowlist mainnet için zorunlu kılınmıştır.",
   "config": {
     "chainID": 99998,
     "homesteadBlock": 0,

@@ -1,4 +1,4 @@
-# Genesis Configurations — koza-L1
+# Genesis Configurations — kozalak-L1
 
 Bu klasör, Avalanche **Subnet-EVM** üzerinde kendi Sovereign L1'ini ayağa kaldırmak isteyen geliştiriciler için hazır genesis JSON şablonları içerir. Her şablon, ilgili template ile birlikte kullanılır.
 
@@ -30,7 +30,7 @@ L1'in native token'ı = sizin token'ınız (örn. KGAS). Kullanıcılar tx ödem
 
 ```bash
 # Avalanche CLI ile:
-avalanche blockchain create my-koza-l1 --custom \
+avalanche blockchain create my-kozalak-l1 --custom \
   --genesis ./genesis/erc20-gas-token.json
 ```
 
@@ -149,22 +149,22 @@ Default değerler `15M gas/block`, `2 saniye block time`. Gaming/yüksek-frekans
 ### Local devnet (test için)
 
 ```bash
-avalanche blockchain create my-koza-l1 --custom \
+avalanche blockchain create my-kozalak-l1 --custom \
   --genesis ./genesis/erc20-gas-token.json
 
-avalanche blockchain deploy my-koza-l1 --local
+avalanche blockchain deploy my-kozalak-l1 --local
 ```
 
 ### Fuji testnet (entegrasyon test için)
 
 ```bash
-avalanche blockchain deploy my-koza-l1 --fuji
+avalanche blockchain deploy my-kozalak-l1 --fuji
 ```
 
 ### Mainnet (production)
 
 ```bash
-avalanche blockchain deploy my-koza-l1 --mainnet
+avalanche blockchain deploy my-kozalak-l1 --mainnet
 ```
 
 ⚠️ **Mainnet öncesi checklist:**

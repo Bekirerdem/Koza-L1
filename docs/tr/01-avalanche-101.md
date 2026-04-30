@@ -143,7 +143,7 @@ ICM **bunların hiçbirine** ihtiyaç duymaz. BLS multi-signature ile L1 validat
 - **Lock/Release**: kaynakta token kilitlenir, hedefte ayrı bir token mint edilir; geri dönüş simetrik
 - **Burn/Mint**: kaynakta yakılır, hedefte mint edilir
 
-`koza-L1` Phase 1 Sprint 3'te hazır audited template.
+`kozalak-L1` Phase 1 Sprint 3'te hazır audited template.
 
 ---
 
@@ -186,7 +186,7 @@ forge fmt                # auto-format
 forge script ... --broadcast --verify  # deploy + Snowtrace verify
 ```
 
-`koza-L1` tamamen Foundry üzerine kurulu.
+`kozalak-L1` tamamen Foundry üzerine kurulu.
 
 ### 4.4 Builder Hub & Faucet
 
@@ -207,7 +207,7 @@ Avalanche Foundation, sermaye tahsisi konusunda sektördeki **en agresif** vakı
 **Nasıl çalışır:** Önce inşa edersin, sonra başvurursun. Topluluk leaderboard oylaması ile sıralama.
 
 **Hedef projeler:**
-- L1 deployment toolkits (← `koza-L1` tam buraya oturur)
+- L1 deployment toolkits (← `kozalak-L1` tam buraya oturur)
 - ICM/ICTT use case'leri
 - Geliştirici araçları (indexer, monitoring, dashboard)
 - Eğitim içerikleri (Türkçe doc, video)
@@ -235,7 +235,7 @@ Avalanche Foundation, sermaye tahsisi konusunda sektördeki **en agresif** vakı
 
 ```
 Phase 1 — Build:
-  └─ Açık kaynak proje (örn. koza-L1)
+  └─ Açık kaynak proje (örn. kozalak-L1)
   └─ Türk topluluğu adoption (Team1 TR, üniversite kulüpleri)
   └─ Production traction (X kullanıcı, Y star)
         ↓
@@ -276,9 +276,9 @@ Avalanche Foundation'ın **resmi TR chapter**'ı (eski adıyla Avalanche Türkiy
 
 ## 7. Sıradaki Adım
 
-`koza-L1`'in kendisini kullanarak başla:
+`kozalak-L1`'in kendisini kullanarak başla:
 
-1. **Repo'yu clone et:** `git clone github.com/Bekirerdem/koza-l1`
+1. **Repo'yu clone et:** `git clone github.com/Bekirerdem/Kozalak-L1`
 2. **Template 1 deploy et:** [`docs/tr/03-templateler/erc20-gas.md`](./03-templateler/erc20-gas.md)
 3. **Kendi L1'ini ayağa kaldır:** [`docs/tr/02-l1-deploy.md`](./02-l1-deploy.md) _(yakında)_
 4. **Güvenlik checklist'i takip et:** [`docs/tr/04-guvenlik.md`](./04-guvenlik.md)

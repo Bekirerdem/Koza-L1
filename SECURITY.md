@@ -1,4 +1,4 @@
-# Security Policy — koza-l1
+# Security Policy — kozalak-l1
 
 ## ⚠️ Audit Durumu
 
@@ -10,13 +10,13 @@
 
 ## Güvenlik Açığı Bildirimi
 
-`koza-l1` kodunda bir güvenlik açığı tespit ederseniz lütfen **public issue açmayın**. Aşağıdaki kanallardan birini kullanın:
+`kozalak-l1` kodunda bir güvenlik açığı tespit ederseniz lütfen **public issue açmayın**. Aşağıdaki kanallardan birini kullanın:
 
 ### Tercih Edilen: Email
 
 📧 **l3ekirerdem@gmail.com**
 
-Konu satırına `[koza-l1 SECURITY]` yazınız.
+Konu satırına `[kozalak-l1 SECURITY]` yazınız.
 
 İçerik:
 - Etkilenen dosya / fonksiyon

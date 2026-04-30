@@ -9,7 +9,7 @@ import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 
 /**
  * @title KozaCollection
- * @author koza-L1 contributors
+ * @author kozalak-L1 contributors
  * @notice ERC-721 + ERC-2981 royalty + Ownable2Step + Merkle allowlist NFT koleksiyonu.
  *         Avalanche L1 veya C-Chain üzerinde audit-grade boilerplate.
  * @dev OpenZeppelin v5.3+ pattern'leri. Token id'ler 1'den başlar (UX/explorer kolaylığı).

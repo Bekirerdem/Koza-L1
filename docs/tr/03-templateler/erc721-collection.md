@@ -321,4 +321,4 @@ Her token için JSON metadata `baseURI + tokenId` adresinde olmalı:
 ---
 
 > Bu doküman Türkçe ana dilde yazılmıştır. Sorular için
-> [github.com/Bekirerdem/Koza-L1/discussions](https://github.com/Bekirerdem/Koza-L1/discussions)
+> [github.com/Bekirerdem/Kozalak-L1/discussions](https://github.com/Bekirerdem/Kozalak-L1/discussions)

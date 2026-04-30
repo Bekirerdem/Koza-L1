@@ -3,7 +3,7 @@
 # Avalanche CLI'ı WSL/Ubuntu'ya kurar. Phase 1 Sprint 3 (ICTT bridge) için ön koşul.
 #
 # Kullanım:
-#   cd /mnt/c/Users/l3eki/Desktop/koza-l1
+#   cd /mnt/c/Users/l3eki/Desktop/kozalak-l1
 #   bash scripts/setup/install-avalanche-cli.sh
 #
 set -euo pipefail

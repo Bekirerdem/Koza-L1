@@ -186,7 +186,7 @@ detaylı geçmiş içindir; özet için `[0.3.0]` bölümüne bakın.
 - CONTRIBUTING.md (Türkçe + English)
 - `.env.example` with Teleporter messenger address
 - GitHub Actions CI workflows (build/test/slither/aderyn + release)
-- README v2: branding (`koza-L1`), badges (CI, License, Solidity, Foundry, Avalanche, OZ), ASCII architecture diagram, value proposition, Phase 1/2/3 roadmap, "Why Avalanche?" section
+- README v2: branding (`kozalak-L1`), badges (CI, License, Solidity, Foundry, Avalanche, OZ), ASCII architecture diagram, value proposition, Phase 1/2/3 roadmap, "Why Avalanche?" section
 
 ### Fixed
 - CI: Slither and Aderyn jobs now skip when `src/` has no Solidity files (Sprint 0 → Sprint 1 transition)
@@ -211,7 +211,7 @@ detaylı geçmiş içindir; özet için `[0.3.0]` bölümüne bakın.
 
 ### Added (Sprint 2 — Frontend)
 
-Marketing & landing site for `koza.bekirerdem.dev`. Stack and structure
+Marketing & landing site for `kozalak.bekirerdem.dev`. Stack and structure
 finalized in collaboration with Gemini 3.1 Pro on UI/UX side; Claude
 contributed scaffolding, design tokens, type/lint hygiene, and final
 type-error cleanup.
@@ -238,7 +238,7 @@ type-error cleanup.
   grid (1-2-1 ratio) — left col stacks pitch card + Powered-by Avalanche
   gradient card, center spans 2 cols with abstract orbital network SVG
   (central pulsing red core + 3 orbiting nodes with `feGaussianBlur`
-  glow), right col with docs + "Koza-L1'i Keşfet" CTA. GSAP timeline
+  glow), right col with docs + "Kozalak-L1'i Keşfet" CTA. GSAP timeline
   for entrance + continuous orbital rotation + central pulse
 - **Stacking cards** (`src/components/StackingCards.astro`): 5 sticky
   cards with chamfer-tr top-right cut, offset top values (`10vh + index*6.5rem`)
@@ -246,7 +246,7 @@ type-error cleanup.
   red-hot, orange, dark), 65/35 horizontal split (number + heading +
   body left, oversized monochrome SVG icon right)
 - **Index page** (`src/pages/index.astro`): two-layer scroll trick — z-0
-  pinned "WHY KOZA-L1" mega title (`sticky top-0 h-screen`,
+  pinned "WHY KOZALAK-L1" mega title (`sticky top-0 h-screen`,
   `pointer-events-none`) sits as permanent backdrop while z-10 stacking
   cards scroll over it via `mt-[100vh] pt-[20vh]`. Footer carries Koza
   wordmark + GitHub / Live Contract / Team1 TR / © attribution
@@ -279,8 +279,8 @@ type-error cleanup.
 
 ---
 
-[Unreleased]: https://github.com/Bekirerdem/Koza-L1/compare/v0.3.0...HEAD
-[0.3.0]: https://github.com/Bekirerdem/Koza-L1/compare/v0.2.0...v0.3.0
-[0.2.0]: https://github.com/Bekirerdem/Koza-L1/compare/v0.1.1...v0.2.0
-[0.1.1]: https://github.com/Bekirerdem/Koza-L1/compare/v0.1.0...v0.1.1
-[0.1.0]: https://github.com/Bekirerdem/Koza-L1/releases/tag/v0.1.0
+[Unreleased]: https://github.com/Bekirerdem/Kozalak-L1/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/Bekirerdem/Kozalak-L1/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/Bekirerdem/Kozalak-L1/compare/v0.1.1...v0.2.0
+[0.1.1]: https://github.com/Bekirerdem/Kozalak-L1/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/Bekirerdem/Kozalak-L1/releases/tag/v0.1.0

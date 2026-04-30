@@ -8,7 +8,7 @@ import {Ownable, Ownable2Step} from "@openzeppelin/contracts/access/Ownable2Step
 
 /**
  * @title KozaGasToken
- * @author koza-L1 contributors
+ * @author kozalak-L1 contributors
  * @notice ERC-20 + Capped + Permit + Ownable2Step token. Subnet-EVM L1'de native gas
  *         token olarak veya C-Chain üzerinde yardımcı token olarak kullanılabilir.
  * @dev OpenZeppelin v5.3+ pattern'leri ile audit-grade boilerplate. Custom logic minimum.
