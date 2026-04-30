@@ -159,8 +159,20 @@
                     <g id="anim-core" transform="translate(250, 250)">
                         <circle cx="0" cy="0" r="45" fill="url(#nodeRed)" filter="url(#glow-heavy)"/>
                         <circle cx="0" cy="0" r="35" fill="var(--color-bg-card-dark)"/>
-                        <!-- Inner core dot -->
-                        <circle cx="0" cy="0" r="8" fill="var(--color-white)" opacity="0.95"/>
+                        <!-- Kozalak icon — manuel SVG approximation, kuzenin
+                             vereceği orijinal SVG ile değiştirilecek. -->
+                        <g fill="var(--color-white)" transform="translate(-15, -22) scale(0.85)">
+                            <!-- Top dot -->
+                            <circle cx="18" cy="5" r="2.4"/>
+                            <!-- Layer 1 (top, smallest V) -->
+                            <path d="M8 11 L18 17 L28 11 L28 14 L18 20 L8 14 Z"/>
+                            <!-- Layer 2 -->
+                            <path d="M5 21 L18 29 L31 21 L31 24 L18 32 L5 24 Z"/>
+                            <!-- Layer 3 -->
+                            <path d="M2 31 L18 41 L34 31 L34 34 L18 44 L2 34 Z"/>
+                            <!-- Layer 4 (bottom, largest V) -->
+                            <path d="M0 41 L18 51 L36 41 L36 44 L18 54 L0 44 Z"/>
+                        </g>
                     </g>
                 </svg>
             </div>
