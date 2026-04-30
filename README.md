@@ -12,7 +12,7 @@ _Audit-grade Solidity şablonları · Subnet-EVM · ICTT cross-L1 köprü · Tü
 [![Foundry](https://img.shields.io/badge/Foundry-1.5%2B-orange.svg)](https://book.getfoundry.sh)
 [![Built on Avalanche](https://img.shields.io/badge/Built%20on-Avalanche-E84142.svg)](https://www.avax.network)
 [![OpenZeppelin](https://img.shields.io/badge/OpenZeppelin-v5.3+-4E5EE4.svg)](https://www.openzeppelin.com)
-[![Fuji Live](https://img.shields.io/badge/Fuji-0x06451DD4...2eB0-success?logo=avalanche)](https://testnet.snowtrace.io/address/0x06451DD4Fb8ebFC19870DacC9568f4364D2A2eB0)
+[![Templates Live](https://img.shields.io/badge/Fuji-3%20templates%20live-success?logo=avalanche)](#-şablonlar)
 
 [Ne Bu](#-ne-bu) · [Mimari](#%EF%B8%8F-mimari) · [Şablonlar](#-şablonlar) · [Hızlı Başlangıç](#-hızlı-başlangıç) · [Niye Avalanche](#-niye-avalanche) · [Yol Haritası](#%EF%B8%8F-yol-haritası) · [Güvenlik](#%EF%B8%8F-güvenlik) · [Katkı](#-katkı)
 
@@ -28,7 +28,7 @@ Türk Solidity geliştiricilerinin Avalanche'da kendi blockchain'ini (Sovereign 
 
 ### 📖 Senaryo
 
-> **Mersin'de ARIA Hub workshop'unu bitirmiş bir öğrenci.** Avalanche Build Games hackathon'una katılmak istiyor. Solidity'yi temel düzeyde biliyor ama "kendi token'ımı nasıl deploy ederim, ICTT ile L1'ler arası nasıl köprü kurarım, audit-grade contract nasıl yazılır" bilmiyor.
+> **Patika.dev mezunu bir Solidity geliştiricisi.** Avalanche Build Games hackathon'una katılmak istiyor. Solidity'yi temel düzeyde biliyor ama "kendi token'ımı nasıl deploy ederim, ICTT ile L1'ler arası nasıl köprü kurarım, audit-grade contract nasıl yazılır" bilmiyor.
 >
 > **Şu an:** Bir hafta İngilizce docs + 10 farklı tutorial + Stack Overflow arasında kayboluyor.
 >
@@ -40,11 +40,11 @@ Türk Solidity geliştiricilerinin Avalanche'da kendi blockchain'ini (Sovereign 
 |---|---|---|
 | **Avalanche9000 ile L1 kurulumu %99 ucuzladı** | Ama production-grade Türkçe toolkit yok | Türkçe + audit-grade boilerplate |
 | **Hackathon → production geçişi zor** | Audit pattern'leri, ICTT lock/burn, ERC-7201 storage Türkçe yazılı kaynaklar yetersiz | Audited primitive'ler üzerine kurulu, denenmiş şablonlar |
-| **Türk Avalanche topluluğu büyüyor** | Team1 TR + Koza DAO + ARIA Hub aktif, ortak kod altyapısı eksik | Topluluk içi ortak temel + Türkçe dokümantasyon |
+| **Türk Avalanche topluluğu büyüyor** | Team1 TR + Bursa Koza DAO + üniversite kulüpleri aktif, ortak kod altyapısı eksik | Topluluk içi ortak temel + Türkçe dokümantasyon |
 
 ### Kim İçin?
 
-- 🎓 ARIA Hub, Patika.dev, Kodluyoruz, BTK Akademi mezunları
+- 🎓 Patika.dev, Kodluyoruz, BTK Akademi ve diğer Türk eğitim programlarının mezunları
 - 🏗️ Hackathon-grade'den production'a geçen Türk Solidity geliştiricileri
 - 🏛️ Avalanche'da kendi L1'ini kurmak isteyen küçük ekipler ve öğrenci kulüpleri
 - 💰 Avalanche Foundation grant başvurusu (Retro9000, Codebase) hazırlayanlar
@@ -94,17 +94,18 @@ Türk Solidity geliştiricilerinin Avalanche'da kendi blockchain'ini (Sovereign 
 | # | Şablon | Durum | Açıklama |
 |---|---|---|---|
 | 1 | **ERC-20 + Custom Gas Token** | ✅ v0.1.0 | Subnet-EVM için native gas token — `Ownable2Step`, `Capped`, `Permit` (EIP-2612). [Live on Fuji](https://testnet.snowtrace.io/address/0x06451DD4Fb8ebFC19870DacC9568f4364D2A2eB0) |
-| 2 | **ERC-721 NFT Collection** | ⏳ Planlanıyor | Allowlist (Merkle), royalty (ERC-2981), IPFS metadata, pause |
-| 3 | **ICTT Cross-L1 Köprü** | ⏳ Planlanıyor | `ava-labs/icm-contracts` audited inherit — Token Home + Token Remote |
-| 4 | **Soulbound Credential** | ⏳ Planlanıyor | ERC-5114, eğitim sertifikası, ARIA Hub-uyumlu |
+| 2 | **ERC-721 NFT Collection** | ✅ v0.2.0 | Allowlist (Merkle), royalty (ERC-2981), 3-faz mint (Closed/Allowlist/Public). [Live on Fuji](https://testnet.snowtrace.io/address/0x59347BB4365A18BBd92396Fd138E6cEfcDDb79C9) |
+| 3 | **ICTT Cross-L1 Köprü** | ✅ v0.3.0 | `ava-labs/icm-contracts` audited inherit — Token Home ([Fuji](https://testnet.snowtrace.io/address/0x2b1377537690793939DC42530c15DA897AC9D2D9)) + Token Remote (yerel L1). End-to-end live demo v0.3.1'e ertelendi (icm-relayer setup) |
+| 4 | **Soulbound Credential** | ⏳ Planlanıyor | ERC-5114 jenerik eğitim/topluluk sertifikası — non-transferable NFT |
 | 5 | **Treasury Multisig + Timelock** | ⏳ Planlanıyor | Safe-uyumlu, `AccessManager`, role-based |
 
 Her şablon:
-- ✅ Solidity 0.8.34 + OpenZeppelin v5.3+ inherit
-- ✅ Foundry test (unit + invariant + fuzz, ≥10000 runs)
-- ✅ Slither + Aderyn statik analiz
+- ✅ Solidity 0.8.34 (template 3 için 0.8.25 — icm-contracts uyumu, multi-version compile)
+- ✅ OpenZeppelin v5.3+ inherit + audited 3rd-party (icm-contracts) miras
+- ✅ Foundry test (unit + invariant + fuzz, ≥10000 runs; ICTT için smoke test'ler `vm.etch + vm.mockCall` Warp precompile mock'uyla)
+- ✅ Slither + Aderyn statik analiz (CI)
 - ✅ Türkçe deployment rehberi
-- ✅ Fuji testnet'te çalışan deploy script
+- ✅ Fuji testnet'te çalışan deploy script + Snowtrace verified
 
 ---
 
@@ -159,10 +160,10 @@ forge script script/deploy/DeployERC20Gas.s.sol \
 │  Phase 1 (şu an)     │  Phase 2             │  Phase 3             │
 ├──────────────────────┼──────────────────────┼──────────────────────┤
 │ ✅ Repo + CI setup   │ ⏳ CLI wrapper        │ ⏳ Web dashboard     │
-│ 🚧 5 şablon          │ ⏳ Daha fazla şablon  │ ⏳ "1-tıkla deploy"  │
+│ 🚧 5 şablon (3/5 ✅) │ ⏳ Daha fazla şablon  │ ⏳ "1-tıkla deploy"  │
 │ 🚧 Türkçe docs       │ ⏳ Retro9000 başvuru  │ ⏳ Builder Hub PR    │
-│ ⏳ Slither/Aderyn    │ ⏳ Bug bounty live    │ ⏳ Codebase başvuru  │
-│ ⏳ ARIA Hub pilot    │                      │                      │
+│ ✅ Slither/Aderyn CI │ ⏳ Bug bounty live    │ ⏳ Codebase başvuru  │
+│ ⏳ Topluluk pilot    │                      │                      │
 └──────────────────────┴──────────────────────┴──────────────────────┘
 ```
 
@@ -204,7 +205,6 @@ Bu proje aşağıdaki ekosistemler ve toplulukların omuzlarında yükseliyor:
 - **[OpenZeppelin](https://www.openzeppelin.com/)** — sektör standartı güvenlik kütüphanesi
 - **[Cyfrin Updraft](https://updraft.cyfrin.io/)** — Avalanche L1 development eğitim materyalleri
 - **[Team1 Türkiye](https://team1.blog/)** — Türkiye'nin Avalanche topluluğu
-- **[ARIA Hub](https://ariaeducation.org)** — Türkiye'de Avalanche eğitim platformu
 
 ---
 
