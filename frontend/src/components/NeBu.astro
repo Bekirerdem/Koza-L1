@@ -1,0 +1,86 @@
+---
+// Ne Bu? — Hero'dan sonra projenin kısa pitch'i.
+// Asymmetric grid: solda büyük başlık + senaryo, sağda problem→çözüm matrisi.
+---
+
+<section id="ne-bu" class="relative w-full bg-bg-pure text-white py-24 lg:py-32 px-4 lg:px-8">
+    <div class="max-w-[1400px] mx-auto">
+        <!-- Section header -->
+        <div class="flex items-center gap-4 mb-12 lg:mb-16">
+            <span class="font-sans text-xs lg:text-sm font-bold tracking-[0.3em] uppercase text-koza-red">
+                01 / Ne Bu?
+            </span>
+            <span class="flex-1 h-px bg-white/10"></span>
+        </div>
+
+        <!-- 12-col asymmetric layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+            <!-- Left: pitch + senaryo -->
+            <div class="lg:col-span-5 flex flex-col gap-8">
+                <h2 class="font-sans font-bold leading-[0.95] tracking-tight text-4xl lg:text-[3.5rem] text-white">
+                    "create-react-app", ama Türk dev için <span class="text-koza-red">Avalanche Solidity</span>.
+                </h2>
+
+                <p class="text-base lg:text-lg text-white/70 leading-relaxed font-sans max-w-md">
+                    Türk Solidity geliştiricilerinin Avalanche'da kendi blockchain'ini ve smart contract'larını
+                    <strong class="text-white">production-grade</strong> şekilde deploy etmesi için açık kaynak,
+                    audit-grade boilerplate kütüphanesi.
+                </p>
+
+                <!-- Senaryo card -->
+                <div class="bg-bg-card-dark rounded-[24px] p-6 lg:p-8 avax-chamfer-tr border border-white/5">
+                    <div class="text-koza-red font-sans text-xs font-bold tracking-widest uppercase mb-3">Senaryo</div>
+                    <p class="text-white/80 text-sm lg:text-base leading-relaxed">
+                        Patika.dev mezunu bir Solidity geliştiricisi.
+                        <span class="text-white/50">Avalanche Build Games hackathon'una katılmak istiyor.</span>
+                        <strong class="text-white">Bir hafta İngilizce docs + Stack Overflow arasında kayboluyor.</strong>
+                    </p>
+                    <p class="text-white/80 text-sm lg:text-base leading-relaxed mt-4">
+                        <span class="text-koza-red font-bold">KOZA-L1 ile:</span>
+                        git clone → forge install → audit-grade şablonu uyarla → Türkçe rehberi takip et →
+                        <strong class="text-white">1 saatte güvenli şekilde Fuji'ye deploy.</strong>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right: problem→çözüm matrisi -->
+            <div class="lg:col-span-7 flex flex-col gap-3">
+                <div class="text-white/40 font-sans text-xs font-bold tracking-widest uppercase mb-2">
+                    Problem &rarr; Çözüm
+                </div>
+
+                {[
+                    {
+                        problem: "Avalanche9000 ile L1 kurulumu %99 ucuzladı",
+                        gap: "Ama production-grade Türkçe toolkit yok",
+                        fix: "Türkçe + audit-grade boilerplate",
+                    },
+                    {
+                        problem: "Hackathon → production geçişi zor",
+                        gap: "Audit pattern'leri Türkçe yetersiz",
+                        fix: "Audited primitive'ler üzerine kurulu şablonlar",
+                    },
+                    {
+                        problem: "Türk Avalanche topluluğu büyüyor",
+                        gap: "Ortak kod altyapısı eksik",
+                        fix: "Topluluk içi ortak temel + Türkçe doc",
+                    },
+                ].map((row) => (
+                    <div class="bg-bg-card-dark rounded-2xl p-5 lg:p-6 border border-white/5 hover:border-white/15 transition-colors group">
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 items-center">
+                            <div class="text-white font-sans font-semibold text-sm lg:text-base leading-tight">
+                                {row.problem}
+                            </div>
+                            <div class="text-white/40 text-xs lg:text-sm font-medium leading-relaxed">
+                                {row.gap}
+                            </div>
+                            <div class="text-koza-red font-sans font-bold text-sm lg:text-base leading-tight">
+                                {row.fix}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>

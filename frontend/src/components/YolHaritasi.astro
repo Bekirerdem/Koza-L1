@@ -1,0 +1,121 @@
+---
+// Yol Haritası — Phase 1 / 2 / 3 timeline (3 column).
+
+interface Phase {
+    label: string;
+    title: string;
+    status: "active" | "next" | "later";
+    items: { text: string; done: boolean }[];
+    bgClass: string;
+    accentClass: string;
+}
+
+const phases: Phase[] = [
+    {
+        label: "Phase 1 (şu an)",
+        title: "5 audit-grade şablon",
+        status: "active",
+        items: [
+            { text: "Repo + CI setup", done: true },
+            { text: "ERC-20 Gas Token (v0.1.0)", done: true },
+            { text: "ERC-721 Collection (v0.2.0)", done: true },
+            { text: "ICTT Bridge (v0.3.0)", done: true },
+            { text: "Soulbound Credential (v0.4.0)", done: false },
+            { text: "Treasury Multisig (v0.5.0)", done: false },
+            { text: "EN docs + landing polish", done: false },
+        ],
+        bgClass: "bg-koza-red-deep",
+        accentClass: "text-true-white",
+    },
+    {
+        label: "Phase 2",
+        title: "CLI + traction",
+        status: "next",
+        items: [
+            { text: "CLI wrapper (avax-uyumlu)", done: false },
+            { text: "Daha fazla şablon", done: false },
+            { text: "Retro9000 başvurusu", done: false },
+            { text: "Bug bounty live (Immunefi)", done: false },
+            { text: "Sherlock contest audit", done: false },
+        ],
+        bgClass: "bg-koza-blue-deep",
+        accentClass: "text-true-white",
+    },
+    {
+        label: "Phase 3",
+        title: "Web dashboard + dağıtım",
+        status: "later",
+        items: [
+            { text: "Web dashboard (1-tıkla deploy)", done: false },
+            { text: "Avalanche Builder Hub PR", done: false },
+            { text: "Codebase başvurusu", done: false },
+            { text: "Topluluk pilot programı", done: false },
+        ],
+        bgClass: "bg-bg-card-dark",
+        accentClass: "text-white",
+    },
+];
+---
+
+<section id="roadmap" class="relative w-full bg-bg-primary text-white py-24 lg:py-32 px-4 lg:px-8">
+    <div class="max-w-[1400px] mx-auto">
+        <!-- Section header -->
+        <div class="flex items-center gap-4 mb-12 lg:mb-16">
+            <span class="font-sans text-xs lg:text-sm font-bold tracking-[0.3em] uppercase text-koza-red">
+                04 / Yol Haritası
+            </span>
+            <span class="flex-1 h-px bg-white/10"></span>
+        </div>
+
+        <h2 class="font-sans font-bold leading-[0.95] tracking-tight text-4xl lg:text-[3.5rem] text-white max-w-3xl mb-12 lg:mb-16">
+            Üç fazda Türkiye'nin <br/>
+            <span class="text-koza-red">Avalanche L1 ekosistemi</span>.
+        </h2>
+
+        <!-- 3 column timeline -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-5">
+            {phases.map((phase, idx) => (
+                <article class={`${phase.bgClass} ${phase.accentClass} avax-chamfer-tr p-6 lg:p-8 flex flex-col gap-6 min-h-[400px]`}>
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <div class="font-sans text-xs font-bold tracking-widest uppercase opacity-70 mb-2">
+                                {phase.label}
+                            </div>
+                            <h3 class="font-sans font-bold leading-tight text-2xl lg:text-3xl">
+                                {phase.title}
+                            </h3>
+                        </div>
+                        {phase.status === "active" && (
+                            <span class="inline-flex items-center gap-1.5 text-[0.65rem] font-bold tracking-widest uppercase bg-white/15 px-2 py-1 rounded-full">
+                                <span class="relative flex h-1.5 w-1.5">
+                                    <span class="absolute inline-flex h-full w-full rounded-full bg-white opacity-75 animate-ping" />
+                                    <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-white" />
+                                </span>
+                                AKTİF
+                            </span>
+                        )}
+                    </div>
+
+                    <ul class="flex flex-col gap-2.5 flex-1">
+                        {phase.items.map((item) => (
+                            <li class={`flex items-start gap-3 text-sm ${item.done ? "" : "opacity-60"}`}>
+                                <span class={`mt-0.5 inline-flex w-4 h-4 items-center justify-center shrink-0 rounded-full text-[0.6rem] font-bold ${item.done ? "bg-white/20 text-white" : "border border-white/30 text-white/40"}`}>
+                                    {item.done ? "✓" : "·"}
+                                </span>
+                                <span class={`leading-snug ${item.done ? "line-through decoration-white/40" : ""}`}>
+                                    {item.text}
+                                </span>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <div class="text-[0.65rem] font-mono tracking-tight opacity-50 pt-4 border-t border-white/10">
+                        {idx === 0 && "v0.1.0 → v0.6.0"}
+                        {idx === 1 && "v0.7.0 → v1.0.0"}
+                        {idx === 2 && "v1.1.0+"}
+                    </div>
+                </article>
+            ))}
+        </div>
+    </div>
+</section>

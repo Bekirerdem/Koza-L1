@@ -2,13 +2,26 @@
 import Layout from "@/layouts/Layout.astro";
 import Nav from "@/components/Nav.astro";
 import Hero from "@/components/Hero.astro";
+import NeBu from "@/components/NeBu.astro";
+import Sablonlar from "@/components/Sablonlar.astro";
+import Mimari from "@/components/Mimari.astro";
 import StackingCards from "@/components/StackingCards.astro";
+import YolHaritasi from "@/components/YolHaritasi.astro";
 ---
 
 <Layout>
     <Nav />
     <main class="bg-bg-primary text-white">
         <Hero />
+
+        <!-- 01 / Ne Bu? -->
+        <NeBu />
+
+        <!-- 02 / Şablonlar -->
+        <Sablonlar />
+
+        <!-- 03 / Mimari -->
+        <Mimari />
 
         <!-- MEGA TITLE & STACKING CARDS WRAPPER -->
         <div class="relative w-full">
@@ -27,6 +40,9 @@ import StackingCards from "@/components/StackingCards.astro";
                 <StackingCards />
             </div>
         </div>
+
+        <!-- 04 / Yol Haritası -->
+        <YolHaritasi />
 
         <footer class="relative w-full px-8 py-16 border-t border-gray-700 bg-bg-primary">
             <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 max-w-7xl mx-auto">
@@ -52,7 +68,7 @@ import StackingCards from "@/components/StackingCards.astro";
                         -L1
                     </span>
                 </div>
-                <div class="flex flex-wrap items-center gap-x-8 gap-y-4 text-sm font-semibold text-white/60">
+                <div class="flex flex-wrap items-center gap-x-6 gap-y-4 text-sm font-semibold text-white/60">
                     <a
                         href="https://github.com/Bekirerdem/koza-l1"
                         target="_blank"
@@ -61,14 +77,36 @@ import StackingCards from "@/components/StackingCards.astro";
                     >
                         GitHub
                     </a>
+                    <span class="text-white/30">·</span>
+                    <span class="text-white/50 font-medium tracking-wide uppercase text-xs">Canlı Şablonlar</span>
                     <a
                         href="https://testnet.snowtrace.io/address/0x06451DD4Fb8ebFC19870DacC9568f4364D2A2eB0"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="hover:text-white transition-colors"
+                        title="KozaGasToken — ERC-20 Custom Gas Token"
                     >
-                        Live Contract
+                        v0.1.0 KGAS
                     </a>
+                    <a
+                        href="https://testnet.snowtrace.io/address/0x59347BB4365A18BBd92396Fd138E6cEfcDDb79C9"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="hover:text-white transition-colors"
+                        title="KozaCollection — ERC-721 NFT Collection"
+                    >
+                        v0.2.0 NFT
+                    </a>
+                    <a
+                        href="https://testnet.snowtrace.io/address/0x2b1377537690793939DC42530c15DA897AC9D2D9"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="hover:text-white transition-colors"
+                        title="KozaTokenHome — ICTT Cross-L1 Bridge Home"
+                    >
+                        v0.3.0 ICTT
+                    </a>
+                    <span class="text-white/30">·</span>
                     <a
                         href="https://team1.blog"
                         target="_blank"
