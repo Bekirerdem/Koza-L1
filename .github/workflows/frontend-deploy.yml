@@ -46,4 +46,9 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: frontend
-          command: pages deploy dist --project-name=kozalak-l1 --branch=main
+          # NOT: Cloudflare Pages projesinin gerçek adı kullanıcı dashboard'unda
+          # `koza-l1` olarak duruyor. Repo adı + branding rebrand'da değişti
+          # (Kozalak-L1) ama Pages projesi henüz manuel rename edilmedi.
+          # Dashboard'da proje adı `kozalak-l1`'e değiştirilirse buradaki
+          # --project-name'i de güncelle.
+          command: pages deploy dist --project-name=koza-l1 --branch=main
